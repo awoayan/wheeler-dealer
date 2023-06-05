@@ -7,7 +7,7 @@ class Salesperson(models.Model):
     employee_id = models.SmallIntegerField()
 
 
-class Costumer(models.Model):
+class Customer(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     address = models.CharField(max_length=100)
@@ -21,8 +21,8 @@ class AutomobileVO(models.Model):
 
 class Sale(models.Model):
     price = models.SmallIntegerField()
-    costumer = models.ForeignKey(
-        Costumer,
+    Customer = models.ForeignKey(
+        Customer,
         related_name="sales",
         on_delete=models.CASCADE
     )
