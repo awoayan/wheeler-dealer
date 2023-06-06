@@ -12,12 +12,22 @@ function Nav() {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li>
               <NavLink className="nav-link" aria-current="page" to="/salesperson/">
-                      Salespeople
+                      List of Salespeople
               </NavLink>
             </li>
             <li>
               <NavLink className="nav-link" aria-current="page" to="/salesperson/create/">
                       Add a Salesperson
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="nav-link" aria-current="page" to="/sales/">
+                      List of Sales
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="nav-link" aria-current="page" to="/sales/create/">
+                      Add a Sale
               </NavLink>
             </li>
           </ul>

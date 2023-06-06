@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+
 
 function SalesPeopleList(){
     const [salespeople, setSalespeople] = useState([]);
@@ -17,7 +17,6 @@ function SalesPeopleList(){
       }, []);
     return (
         <>
-        <Outlet/>
         <div>
             <h1>Salespeople</h1>
             <table className="table table-striped table-hover">
