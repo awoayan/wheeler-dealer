@@ -19,7 +19,7 @@ def list_salespeople(request):
         response = Salesperson.objects.all()
 
     return JsonResponse(
-        response,
+        {"salespeople": response},
         encoder=SalesPersonEncoder,
         safe=False
     )
@@ -38,12 +38,12 @@ def salesperson(request, identifier):
 
     if request.method == "DELETE":
         person, _ = Salesperson.objects.get(id=identifier).delete()
-        return JsonResponse({"Salesperson was deleted: ": person > 0})
+        return JsonResponse({"deleted": person > 0})
 
     elif request.method == "GET":
         person = Salesperson.objects.get(id=identifier)
         return JsonResponse(
-            person,
+            {"salespeople": person},
             encoder=SalesPersonEncoder,
             safe=False
         )
@@ -69,7 +69,7 @@ def list_customers(request):
         response = Customer.objects.all()
 
     return JsonResponse(
-        response,
+        {"customers": response},
         encoder=CustomerEncoder,
         safe=False
     )
@@ -88,12 +88,12 @@ def customer(request, identifier):
 
     if request.method == "DELETE":
         person, _ = Customer.objects.get(id=identifier).delete()
-        return JsonResponse({"Customer was deleted: ": person > 0})
+        return JsonResponse({"deleted": person > 0})
 
     elif request.method == "GET":
         person = Customer.objects.get(id=identifier)
         return JsonResponse(
-            person,
+            {"customer": person},
             encoder=CustomerEncoder,
             safe=False
         )
@@ -117,17 +117,20 @@ def list_sales(request):
 
                 auto = AutomobileVO.objects.get(vin=sale_info["automobile"])
                 sale_info["automobile"] = auto
-                
+
                 response = Sale.objects.create(**sale_info)
 
             except Customer.DoesNotExist:
                 response = JsonResponse({"message": "Invalid Customer id."})
+                response.status_code = 400
 
             except Salesperson.DoesNotExist:
                 response = JsonResponse({"message": "Invalid Salesperson employee id."})
+                response.status_code = 400
 
             except AutomobileVO.DoesNotExist:
                 response = JsonResponse({"message": "Invalid automobile vin."})
+                response.status_code = 400
 
 
 
@@ -140,7 +143,7 @@ def list_sales(request):
         response = Sale.objects.all()
 
     return JsonResponse(
-        response,
+        {"sales": response},
         encoder=SaleEncoder,
         safe=False
     )
@@ -164,7 +167,7 @@ def sale(request, identifier):
     elif request.method == "GET":
         this_sale = Sale.objects.get(id=identifier)
         return JsonResponse(
-            this_sale,
+            {"sale": this_sale},
             encoder=SaleEncoder,
             safe=False
         )
