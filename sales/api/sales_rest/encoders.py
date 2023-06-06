@@ -30,16 +30,16 @@ class AutomobileVOEncoder(ModelEncoder):
     ]
 
 
-class Sale(ModelEncoder):
+class SaleEncoder(ModelEncoder):
     model = Sale
     properties = [
         "price",
-        "Customer",
+        "customer",
         "salesperson",
         "automobile"
     ]
     encoders = {
-        "Customer": CustomerEncoder,
-        "salesperson": SalesPersonEncoder,
-        "automobile": AutomobileVOEncoder
+        "customer": CustomerEncoder(),
+        "salesperson": SalesPersonEncoder(),
+        "automobile": AutomobileVOEncoder()
     }

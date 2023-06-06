@@ -1,7 +1,7 @@
-from .models import Salesperson, Sale, AutomobileVO, Customer
+from .encoders import SalesPersonEncoder, CustomerEncoder, SaleEncoder
+from .models import Salesperson, Sale, Customer, AutomobileVO
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
-from .encoders import SalesPersonEncoder
 import json
 
 
@@ -25,21 +25,148 @@ def list_salespeople(request):
     )
 
 
+@require_http_methods(["GET", "PUT","DELETE"])
+def salesperson(request, identifier):
+
+    try:
+        person = Salesperson.objects.get(id=identifier)
+
+    except Salesperson.DoesNotExist:
+        response = JsonResponse({"message": "That Salesperson does not exist. Verify the correct url and id. I am is now teapot."})
+        response.status_code = 418
+        return response
+
+    if request.method == "DELETE":
+        person, _ = Salesperson.objects.get(id=identifier).delete()
+        return JsonResponse({"Salesperson was deleted: ": person > 0})
+
+    elif request.method == "GET":
+        person = Salesperson.objects.get(id=identifier)
+        return JsonResponse(
+            person,
+            encoder=SalesPersonEncoder,
+            safe=False
+        )
+
+    return JsonResponse({"need a put method still":True})
+
+
 @require_http_methods(["GET", "POST"])
 def list_customers(request):
+
     if request.method=="POST":
+
         try:
             body = json.loads(request.body)
-            response = Salesperson.objects.create(**body)
+            response = Customer.objects.create(**body)
+
         except AttributeError:
-            response = JsonResponse({"message": "Invalid Customer creation information. I am now teapot."})
+            response = JsonResponse({"message": "Invalid Customer creation information. I am is now teapot."})
             response.status_code = 418
             return response
+
     else:
         response = Customer.objects.all()
 
     return JsonResponse(
         response,
-        encoder=SalesPersonEncoder,
+        encoder=CustomerEncoder,
         safe=False
     )
+
+
+@require_http_methods(["GET", "PUT","DELETE"])
+def customer(request, identifier):
+
+    try:
+        person = Customer.objects.get(id=identifier)
+
+    except Customer.DoesNotExist:
+        response = JsonResponse({"message": "That Customer does not exist. Verify the correct url and id. I am is now teapot."})
+        response.status_code = 418
+        return response
+
+    if request.method == "DELETE":
+        person, _ = Customer.objects.get(id=identifier).delete()
+        return JsonResponse({"Customer was deleted: ": person > 0})
+
+    elif request.method == "GET":
+        person = Customer.objects.get(id=identifier)
+        return JsonResponse(
+            person,
+            encoder=CustomerEncoder,
+            safe=False
+        )
+
+    return JsonResponse({"need a put method still":True})
+
+
+@require_http_methods(["GET", "POST"])
+def list_sales(request):
+
+    if request.method=="POST":
+
+        try:
+            sale_info = json.loads(request.body)
+            try:
+                customer = Customer.objects.get(id=sale_info["customer"])
+                sale_info["customer"] = customer
+
+                sales_person = Salesperson.objects.get(employee_id=sale_info["salesperson"])
+                sale_info["salesperson"] = sales_person
+
+                auto = AutomobileVO.objects.get(vin=sale_info["automobile"])
+                sale_info["automobile"] = auto
+                
+                response = Sale.objects.create(**sale_info)
+
+            except Customer.DoesNotExist:
+                response = JsonResponse({"message": "Invalid Customer id."})
+
+            except Salesperson.DoesNotExist:
+                response = JsonResponse({"message": "Invalid Salesperson employee id."})
+
+            except AutomobileVO.DoesNotExist:
+                response = JsonResponse({"message": "Invalid automobile vin."})
+
+
+
+        except AttributeError:
+            response = JsonResponse({"message": "Invalid Sale creation information. I am is now teapot."})
+            response.status_code = 418
+            return response
+
+    else:
+        response = Sale.objects.all()
+
+    return JsonResponse(
+        response,
+        encoder=SaleEncoder,
+        safe=False
+    )
+
+
+@require_http_methods(["GET", "PUT","DELETE"])
+def sale(request, identifier):
+
+    try:
+        this_sale = Sale.objects.get(id=identifier)
+
+    except Sale.DoesNotExist:
+        response = JsonResponse({"message": "That Sale does not exist. Verify the correct url and id. I am is now teapot."})
+        response.status_code = 418
+        return response
+
+    if request.method == "DELETE":
+        this_sale, _ = Sale.objects.get(id=identifier).delete()
+        return JsonResponse({"Sale was deleted: ": this_sale > 0})
+
+    elif request.method == "GET":
+        this_sale = Sale.objects.get(id=identifier)
+        return JsonResponse(
+            this_sale,
+            encoder=SaleEncoder,
+            safe=False
+        )
+
+    return JsonResponse({"need a put method still":True})
