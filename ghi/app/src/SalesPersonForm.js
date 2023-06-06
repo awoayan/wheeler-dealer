@@ -1,5 +1,5 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+
 
 function SalesPersonForm( ) {
     const handleFormChange = (event) => {
@@ -37,10 +37,11 @@ function SalesPersonForm( ) {
         }
     }
     return (
-        <div className="car-bg">
-        <div className="row align-items-center">
-            <div className="col-6">
-                <div className="shadow p-4 mt-4">
+        <>
+        <img className='justify-self-start' style={{'overflow':'hidden','left':'0',"position":"absolute", 'zIndex':'-5','height':'100%','width':'100%', 'boxSizing':'content-box', }} src="https://wompampsupport.azureedge.net/fetchimage?siteId=7575&v=2&jpgQuality=100&width=700&url=https%3A%2F%2Fi.kym-cdn.com%2Fentries%2Ficons%2Ffacebook%2F000%2F026%2F561%2Fcar.jpg"/>
+        <div className="row align-self-start">
+            <div className="col-6 p-0 mx-auto bg-white bg-opacity-75" style={{'position':'absolute', 'left':'4em'}}>
+                <div className="shadow p-4 mt-4 bg-white bg-opacity-75">
                     <h1>Add a Salesperson</h1>
                     <div id="successful"className="alert alert-success text-center my-3 d-none">Salesperson was added!</div>
                     <form onSubmit={handleSubmit} id="create-location-form">
@@ -61,7 +62,7 @@ function SalesPersonForm( ) {
                 </div>
             </div>
         </div>
-        </div>
+        </>
     );
 }
 

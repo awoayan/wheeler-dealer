@@ -13,6 +13,7 @@ code {
 }
 
 .car-bg{
-  background-image: url(https://wompampsupport.azureedge.net/fetchimage?siteId=7575&v=2&jpgQuality=100&width=700&url=https%3A%2F%2Fi.kym-cdn.com%2Fentries%2Ficons%2Ffacebook%2F000%2F026%2F561%2Fcar.jpg);
+  background-image: url("https://wompampsupport.azureedge.net/fetchimage?siteId=7575&v=2&jpgQuality=100&width=700&url=https%3A%2F%2Fi.kym-cdn.com%2Fentries%2Ficons%2Ffacebook%2F000%2F026%2F561%2Fcar.jpg");
   background: linear-gradient(0.25turn, #a1a1a1, #ffffff, #a1a1a1);
+  background-size:cover;
 }
