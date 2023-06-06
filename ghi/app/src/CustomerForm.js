@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-function SalesPersonForm( ) {
+function CustomerForm( ) {
     const handleFormChange = (event) => {
         setFormValues({
             ...formValues,
@@ -11,12 +11,13 @@ function SalesPersonForm( ) {
     const [formValues, setFormValues] = useState({
         first_name:'',
         last_name:'',
-        employee_id:'',
+        phone_number:'',
+        address:'',
         }
     );
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const locationUrl = 'http://localhost:8090/api/salespeople/';
+        const locationUrl = 'http://localhost:8090/api/customers/';
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(formValues),
@@ -32,7 +33,8 @@ function SalesPersonForm( ) {
             setFormValues({
                 first_name:'',
                 last_name:'',
-                employee_id:''
+                address:'',
+                phone_number:''
             })
         }
     }
@@ -42,9 +44,9 @@ function SalesPersonForm( ) {
         <div className="row" style={{"justifyContent":"center"}}>
             <div className="col m-0 px-0 bg-white bg-opacity-75" style={{'maxWidth':'60%'}}>
                 <div className="shadow p-4 bg-white bg-opacity-75">
-                    <h1>Add a Salesperson</h1>
-                    <div id="successful"className="alert alert-success text-center my-3 d-none">Salesperson was added!</div>
-                    <form onSubmit={handleSubmit} id="create-salesperson-form">
+                    <h1>Add a Customer</h1>
+                    <div id="successful"className="alert alert-success text-center my-3 d-none">Customer was added!</div>
+                    <form onSubmit={handleSubmit} id="create-customer-form">
                         <div className="form-floating mb-3">
                             <input onChange={handleFormChange} placeholder="First Name" required type="text" name="first_name" id="firstName" className="form-control" value={formValues.first_name}/>
                             <label htmlFor="firstName">First name</label>
@@ -54,8 +56,12 @@ function SalesPersonForm( ) {
                             <label htmlFor="lastName">Last Name</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input onChange={handleFormChange}  value={formValues.employee_id} placeholder="employee_id" required type="text" name="employee_id" id="employeeId" className="form-control" />
-                            <label htmlFor="employeeId">Employee ID</label>
+                            <input onChange={handleFormChange}  value={formValues.phone_number} placeholder="Phone Number" required type="text" name="phone_number" id="phone" className="form-control" />
+                            <label htmlFor="phone">Phone Number</label>
+                        </div>
+                        <div className="form-floating mb-3">
+                            <input onChange={handleFormChange}  value={formValues.address} placeholder="Address" required type="text" name="address" id="address" className="form-control" />
+                            <label htmlFor="address">Address</label>
                         </div>
                         <button className="btn btn-primary">Create</button>
                     </form>
@@ -66,4 +72,4 @@ function SalesPersonForm( ) {
     );
 }
 
-export default SalesPersonForm
+export default CustomerForm
