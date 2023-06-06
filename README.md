@@ -1,9 +1,9 @@
 # CarCar
 
-Team:
+Team: Ayan and Charles
 
-* Person 1 - Which microservice?
-* Person 2 - Which microservice?
+* Person 1 - Which microservice? Charles - Sales
+* Person 2 - Which microservice? Ayan - services
 
 ## Design
 
