@@ -12,8 +12,8 @@ def list_salespeople(request):
             body = json.loads(request.body)
             response = Salesperson.objects.create(**body)
         except AttributeError:
-            response = JsonResponse({"message": "Invalid Salesperson creation information. I am now teapot."})
-            response.status_code = 418
+            response = JsonResponse({"message": "Invalid Salesperson creation information."})
+            response.status_code = 400
             return response
     else:
         response = Salesperson.objects.all()
@@ -32,8 +32,8 @@ def salesperson(request, identifier):
         person = Salesperson.objects.get(id=identifier)
 
     except Salesperson.DoesNotExist:
-        response = JsonResponse({"message": "That Salesperson does not exist. Verify the correct url and id. I am is now teapot."})
-        response.status_code = 418
+        response = JsonResponse({"message": "That Salesperson does not exist. Verify the correct url and id."})
+        response.status_code = 404
         return response
 
     if request.method == "DELETE":
@@ -61,8 +61,8 @@ def list_customers(request):
             response = Customer.objects.create(**body)
 
         except AttributeError:
-            response = JsonResponse({"message": "Invalid Customer creation information. I am is now teapot."})
-            response.status_code = 418
+            response = JsonResponse({"message": "Invalid Customer creation information."})
+            response.status_code = 400
             return response
 
     else:
@@ -82,8 +82,8 @@ def customer(request, identifier):
         person = Customer.objects.get(id=identifier)
 
     except Customer.DoesNotExist:
-        response = JsonResponse({"message": "That Customer does not exist. Verify the correct url and id. I am is now teapot."})
-        response.status_code = 418
+        response = JsonResponse({"message": "That Customer does not exist. Verify the correct url and id."})
+        response.status_code = 404
         return response
 
     if request.method == "DELETE":
@@ -135,8 +135,8 @@ def list_sales(request):
 
 
         except AttributeError:
-            response = JsonResponse({"message": "Invalid Sale creation information. I am is now teapot."})
-            response.status_code = 418
+            response = JsonResponse({"message": "Invalid Sale creation information."})
+            response.status_code = 400
             return response
 
     else:
@@ -156,13 +156,13 @@ def sale(request, identifier):
         this_sale = Sale.objects.get(id=identifier)
 
     except Sale.DoesNotExist:
-        response = JsonResponse({"message": "That Sale does not exist. Verify the correct url and id. I am is now teapot."})
-        response.status_code = 418
+        response = JsonResponse({"message": "That Sale does not exist. Verify the correct url and id."})
+        response.status_code = 404
         return response
 
     if request.method == "DELETE":
         this_sale, _ = Sale.objects.get(id=identifier).delete()
-        return JsonResponse({"Sale was deleted: ": this_sale > 0})
+        return JsonResponse({"deleted": this_sale > 0})
 
     elif request.method == "GET":
         this_sale = Sale.objects.get(id=identifier)
