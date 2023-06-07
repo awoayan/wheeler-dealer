@@ -39,7 +39,7 @@ function SalesPersonForm( ) {
     return (
         <div className="d-grid">
         <img style={{'overflow':'hidden','left':'0',"position":"absolute", 'zIndex':'-1','height':'100%','width':'100%'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwmRaSs92QKXG3ZG7yLmvNdeRb0nOQMcWCJw&usqp=CAU"/>
-        <div className="row" style={{"justifyContent":"center"}}>
+        <div className="row pt-5 mt-5" style={{"justifyContent":"center"}}>
             <div className="col m-0 px-0 bg-white bg-opacity-75" style={{'maxWidth':'60%'}}>
                 <div className="shadow p-4 bg-white bg-opacity-75">
                     <h1>Add a Salesperson</h1>

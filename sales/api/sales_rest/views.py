@@ -76,10 +76,10 @@ def list_customers(request):
 
 
 @require_http_methods(["GET", "PUT","DELETE"])
-def customer(request, identifier):
+def customer(request, id):
 
     try:
-        person = Customer.objects.get(id=identifier)
+        person = Customer.objects.get(id=id)
 
     except Customer.DoesNotExist:
         response = JsonResponse({"message": "That Customer does not exist. Verify the correct url and id."})
@@ -87,11 +87,11 @@ def customer(request, identifier):
         return response
 
     if request.method == "DELETE":
-        person, _ = Customer.objects.get(id=identifier).delete()
+        person, _ = Customer.objects.get(id=id).delete()
         return JsonResponse({"deleted": person > 0})
 
     elif request.method == "GET":
-        person = Customer.objects.get(id=identifier)
+        person = Customer.objects.get(id=id)
         return JsonResponse(
             {"customer": person},
             encoder=CustomerEncoder,

@@ -1,8 +1,25 @@
 import React, { useEffect, useState } from 'react';
 
 
+const Delete = async (event) => {
+    const identifier = event.target.id
+    if(window.confirm(`Are you sure you want to delete this?`)){
+        const url = `http://localhost:8090/api/customers/${identifier}/`
+        const fetchConfig = {
+            method: "delete",
+            headers: {
+            'Content-Type': 'application/json',
+            },
+        };
+        const response = await fetch(url,fetchConfig)
+        if (response.ok) {return(window.location.reload())}
+    }
+}
+
+
+
 function CustomerList(){
-    const [salespeople, setCustomers] = useState([]);
+    const [customers, setCustomers] = useState([]);
     const fetchData = async () => {
         const url = 'http://localhost:8090/api/customers/';
         const response = await fetch(url);
@@ -28,13 +45,14 @@ function CustomerList(){
                     </tr>
                 </thead>
                 <tbody>
-                    {salespeople.map(person => {
+                    {customers.map(person => {
                     return (
                         <tr key={person.id}>
                             <td>{person.first_name}</td>
                             <td>{person.last_name}</td>
                             <td>{person.phone_number}</td>
                             <td>{person.address}</td>
+                            <td><button className='badge btn-danger' id={person.id} onClick={Delete}>Delete</button></td>
                         </tr>
                     );
                     })}

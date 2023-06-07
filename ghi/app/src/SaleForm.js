@@ -2,13 +2,36 @@ import React, { useEffect, useState } from 'react';
 
 
 function SaleForm( ) {
+    const setImage = async ()=> {
+        let image = document.getElementById("bgimage")
+        image.src="https://wompampsupport.azureedge.net/fetchimage?siteId=7575&v=2&jpgQuality=100&width=700&url=https%3A%2F%2Fi.kym-cdn.com%2Fentries%2Ficons%2Ffacebook%2F000%2F026%2F561%2Fcar.jpg"
+
+    }
     const handleFormChange = (event) => {
+        if(event.target.name=="automobile"){
+            let image = document.getElementById("bgimage")
+            let matched = false
+            for(let car of autos){
+                if (car.vin == event.target.value){
+                    matched = true
+                    image.src = car.model.picture_url
+                }
+            }
+            if(!matched){
+                setImage()
+            }
+            setFormValues({
+                ...formValues,
+                [event.target.name]:event.target.value
+            })
+        }
         setFormValues({
             ...formValues,
             [event.target.name]:event.target.value
         })
     }
-    const [formValues, setFormValues] = useState({
+    const [formValues, setFormValues] = useState(
+        {
         price: '',
         customer: '',
         salesperson: '',
@@ -51,7 +74,7 @@ function SaleForm( ) {
         if (response.ok) {
             const successTag = document.getElementById("successful")
             successTag.classList.remove("d-none")
-            
+
             setFormValues({
                 price: '',
                 customer: '',
@@ -62,10 +85,10 @@ function SaleForm( ) {
     }
     return (
         <>
-        <img className='justify-self-start' style={{'overflow':'hidden','left':'0',"position":"absolute", 'zIndex':'-5','height':'100%','width':'100%', 'boxSizing':'content-box', }} src="https://wompampsupport.azureedge.net/fetchimage?siteId=7575&v=2&jpgQuality=100&width=700&url=https%3A%2F%2Fi.kym-cdn.com%2Fentries%2Ficons%2Ffacebook%2F000%2F026%2F561%2Fcar.jpg"/>
-        <div className="row align-self-start">
-            <div className="col-6 p-0 mx-auto bg-white bg-opacity-75" style={{'position':'absolute', 'left':'4em'}}>
-                <div className="shadow p-4 mt-4 bg-white bg-opacity-75">
+        <img id="bgimage"className='justify-self-start' onError={setImage} style={{'left':'0',"position":"absolute", 'zIndex':'-5','height':'100%','width':'100%', 'boxSizing':'content-box', }} src=''/>
+        <div className="row align-self-start p-2">
+            <div className="col-6 p-0 mt-3 bg-light bg-opacity-75" style={{'position':'absolute', 'left':'4em','width':'40%'}}>
+                <div className="shadow p-4 bg-light bg-opacity-75">
                     <h1>Add a Sale</h1>
                     <div id="successful"className="alert alert-success text-center my-3 d-none">Sale was added!</div>
                     <form onSubmit={handleSubmit} id="create-sale-form">
@@ -75,11 +98,11 @@ function SaleForm( ) {
                         </div>
                         <div className="mb-3">
                             <select onChange={handleFormChange} required id="customer" className="form-select" name="customer">
-                                <option value=''>Select Customer</option>;
-                                {customers.map(customer => {
+                                <option key='-3'>Select Customer</option>;
+                                {customers.map((customer) => {
                                     return (
                                         <option key={customer.id} value={customer.id}>
-                                            First: {customer.first_name} ; Last: {customer.last_name}
+                                            {customer.first_name} {customer.last_name}
                                         </option>
                                         );
                                     })}
@@ -87,11 +110,11 @@ function SaleForm( ) {
                         </div>
                         <div className="mb-3">
                             <select onChange={handleFormChange} required id="salesperson" className="form-select" name="salesperson">
-                                <option value=''>Select Salesperson</option>;
-                                {salespeople.map(salesperson => {
+                                <option key='-2' value=''>Select Salesperson</option>;
+                                {salespeople.map((salesperson) => {
                                     return (
-                                        <option key={salesperson.employee_id} value={salesperson.employee_id}>
-                                            First: {salesperson.first_name} ; Last: {salesperson.last_name}
+                                        <option key={salesperson.id} value={salesperson.employee_id}>
+                                            {salesperson.first_name} {salesperson.last_name}
                                         </option>
                                         );
                                     })}
@@ -99,13 +122,12 @@ function SaleForm( ) {
                         </div>
                         <div className="mb-3">
                             <select onChange={handleFormChange} required id="automobile" className="form-select" name="automobile">
-                                <option value=''>Select Automobile</option>;
-                                {autos.map(automobile => {
+                                <option key='-1' value='123'>Select Automobile</option>;
+                                {autos.map((automobile) => {
 
                                     return (
-
-                                        <option key={automobile.vin} value={automobile.vin}>
-                                            Make: {automobile.model.manufacturer.name} ; Model: {automobile.model.name}
+                                        <option key={automobile.id} value={automobile.vin}>
+                                            {automobile.model.manufacturer.name} {automobile.model.name}
                                         </option>
                                         );
                                     })}
