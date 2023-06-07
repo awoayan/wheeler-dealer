@@ -26,10 +26,10 @@ def list_salespeople(request):
 
 
 @require_http_methods(["GET", "PUT","DELETE"])
-def salesperson(request, identifier):
+def salesperson(request, id):
 
     try:
-        person = Salesperson.objects.get(id=identifier)
+        person = Salesperson.objects.get(id=id)
 
     except Salesperson.DoesNotExist:
         response = JsonResponse({"message": "That Salesperson does not exist. Verify the correct url and id."})
@@ -37,11 +37,11 @@ def salesperson(request, identifier):
         return response
 
     if request.method == "DELETE":
-        person, _ = Salesperson.objects.get(id=identifier).delete()
+        person, _ = Salesperson.objects.get(id=id).delete()
         return JsonResponse({"deleted": person > 0})
 
     elif request.method == "GET":
-        person = Salesperson.objects.get(id=identifier)
+        person = Salesperson.objects.get(id=id)
         return JsonResponse(
             {"salespeople": person},
             encoder=SalesPersonEncoder,
@@ -76,10 +76,10 @@ def list_customers(request):
 
 
 @require_http_methods(["GET", "PUT","DELETE"])
-def customer(request, identifier):
+def customer(request, id):
 
     try:
-        person = Customer.objects.get(id=identifier)
+        person = Customer.objects.get(id=id)
 
     except Customer.DoesNotExist:
         response = JsonResponse({"message": "That Customer does not exist. Verify the correct url and id."})
@@ -87,11 +87,11 @@ def customer(request, identifier):
         return response
 
     if request.method == "DELETE":
-        person, _ = Customer.objects.get(id=identifier).delete()
+        person, _ = Customer.objects.get(id=id).delete()
         return JsonResponse({"deleted": person > 0})
 
     elif request.method == "GET":
-        person = Customer.objects.get(id=identifier)
+        person = Customer.objects.get(id=id)
         return JsonResponse(
             {"customer": person},
             encoder=CustomerEncoder,
@@ -150,10 +150,10 @@ def list_sales(request):
 
 
 @require_http_methods(["GET", "PUT","DELETE"])
-def sale(request, identifier):
+def sale(request, id):
 
     try:
-        this_sale = Sale.objects.get(id=identifier)
+        this_sale = Sale.objects.get(id=id)
 
     except Sale.DoesNotExist:
         response = JsonResponse({"message": "That Sale does not exist. Verify the correct url and id."})
@@ -161,11 +161,11 @@ def sale(request, identifier):
         return response
 
     if request.method == "DELETE":
-        this_sale, _ = Sale.objects.get(id=identifier).delete()
+        this_sale, _ = Sale.objects.get(id=id).delete()
         return JsonResponse({"deleted": this_sale > 0})
 
     elif request.method == "GET":
-        this_sale = Sale.objects.get(id=identifier)
+        this_sale = Sale.objects.get(id=id)
         return JsonResponse(
             {"sale": this_sale},
             encoder=SaleEncoder,

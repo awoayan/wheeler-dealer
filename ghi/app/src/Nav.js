@@ -2,28 +2,61 @@ import { NavLink } from 'react-router-dom';
 
 function Nav() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-success">
-      <div className="container-fluid">
-        <NavLink className="navbar-brand" to="/">CarCar</NavLink>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+  <nav className="navbar navbar-expand-lg navbar-dark bg-success">
+    <div className="container-fluid">
+      <NavLink className="navbar-brand" to="/">CarCar</NavLink>
+      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li>
-              <NavLink className="nav-link" aria-current="page" to="/salesperson/">
-                      Salespeople
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className="nav-link" aria-current="page" to="/salesperson/create/">
+            <div className="d-flex">
+              <button className="navbar-toggler navbar-dropdown d-inline" type="button" data-bs-toggle="collapse" data-bs-target="#sales" aria-controls="sales" aria-expanded="false" aria-label="Toggle navigation">
+                <div className="navbar-brand navbar-dropdown">Sales Department</div>
+              </button>
+              <div className="collapse" id="sales">
+                <div className="row">
+                  <div className="col ps-3 pe-3 mx-3">
+                    <NavLink className="nav-link" aria-current="page" to="/salesperson/">
+                      List of Salespeople
+                    </NavLink>
+                  </div>
+                  <div className="col ps-3 pe-3 mx-3">
+                    <NavLink className="nav-link" aria-current="page" to="/customers/">
+                      List of Customers
+                    </NavLink>
+                  </div>
+                  <div className="col ps-3 pe-3 mx-3">
+                  <NavLink className="nav-link" aria-current="page" to="/sales/">
+                    List of Sales
+                  </NavLink>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col ps-3 pe-3 mx-3">
+                    <NavLink className="nav-link" aria-current="page" to="/salesperson/create/">
                       Add a Salesperson
-              </NavLink>
-            </li>
-          </ul>
-        </div>
+                    </NavLink>
+                  </div>
+                  <div className="col ps-3 pe-3 mx-3">
+                    <NavLink className="nav-link" aria-current="page" to="/customers/create/">
+                      Add a Customer
+                    </NavLink>
+                  </div>
+                  <div className="col ps-3 pe-3 mx-3">
+                  <NavLink className="nav-link" aria-current="page" to="/sales/create/">
+                    Add a Sale
+                  </NavLink>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
   )
 }
 
