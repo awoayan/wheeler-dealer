@@ -46,7 +46,9 @@ function SaleForm() {
         if (response.ok) {
             const data = await response.json();
             if (objName == 'autos') {
-                setAutos(data[objName])
+                const notSoldAutos = []
+                data.autos.map((car) => {if(!car.sold){notSoldAutos.push(car)}})
+                setAutos(notSoldAutos)
             }
             else if (objName == 'customers') {
                 setCustomers(data[objName])
@@ -72,15 +74,20 @@ function SaleForm() {
 
         const response = await fetch(youAreEl, fetchConfig);
         if (response.ok) {
-            const successTag = document.getElementById("successful")
-            successTag.classList.remove("d-none")
-
-            setFormValues({
-                price: '',
-                customer: '',
-                salesperson: '',
-                automobile: '',
-            })
+            const carUrl = `http://localhost:8100/api/automobiles/${formValues.automobile}/`
+            const fetchConfig = {
+                method: "put",
+                body: JSON.stringify({'sold': true}),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+            const response2 = await fetch(carUrl, fetchConfig)
+            if (response2.ok){
+                const successTag = document.getElementById("successful")
+                successTag.classList.remove("d-none")
+                window.location.reload()
+            }
         }
     }
     return (

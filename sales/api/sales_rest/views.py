@@ -120,6 +120,7 @@ def list_sales(request):
                 sale_info["automobile"] = auto
 
                 response = Sale.objects.create(**sale_info)
+                
 
             except Customer.DoesNotExist:
                 response = JsonResponse({"message": "Invalid Customer id."})
