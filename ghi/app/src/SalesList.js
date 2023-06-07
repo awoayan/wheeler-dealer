@@ -41,6 +41,7 @@ function SalesList() {
                             <th>Customer</th>
                             <th>SalesPerson</th>
                             <th>Automobile</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>

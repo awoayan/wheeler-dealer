@@ -42,6 +42,7 @@ function CustomerList() {
                         <th>Last Name</th>
                         <th>Phone Number</th>
                         <th>Address</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>

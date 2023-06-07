@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const Delete = async (event) => {
@@ -60,18 +61,18 @@ function SalesPeopleList() {
                                 <td className="dropdown"><button className='badge bg-info rounded-pill text-dark dropdown-toggle' data-bs-toggle="dropdown" aria-expanded="false" value={person.id}>History</button>
                                 <li id={person.id} className="dropdown-menu w-100% px-5 justify-content-center " aria-labelledby={person.id}>
                                     <hgroup className='dropdown-item px-5 d-flex justify-content-center'>
-                                        <h3 className="d-inline">Price</h3>
-                                        <h3 className="d-inline px-5">Customer</h3>
-                                        <h3 className="d-inline">Automobile VIN</h3>
+                                        <h3 className="d-inline pe-4">Price</h3>
+                                        <h3 className="d-inline px-5 ms-2">Customer</h3>
+                                        <h3 className="d-inline ps-2">Automobile VIN</h3>
                                     </hgroup>
                                         {salesList.map(sale => {
                                             if(sale.salesperson.employee_id == person.employee_id){
                                                 return (
-                                                <hgroup key={sale.id} className='dropdown-item mx-1 d-flex justify-content-end'>
-                                                    <p className="d-inline px-2 mx-4">{sale.price}</p>
-                                                    <p className="d-inline px-2 mx-4">{sale.customer.first_name} {sale.customer.last_name}</p>
-                                                    <p className="d-inline px-2 mx-4">{sale.automobile.vin}</p>
-                                                </hgroup>
+                                                <Link key={sale.id} className='dropdown-item mx-1 d-flex justify-content-end' onClick="" to="/sales">
+                                                    <p className="d-inline ps-3">{sale.price}</p>
+                                                    <p className="d-inline px-5 mx-5">{sale.customer.first_name} {sale.customer.last_name}</p>
+                                                    <p className="d-inline pe-5 me-2">{sale.automobile.vin}</p>
+                                                </Link>
                                                 )
                                             }
                                         })}
