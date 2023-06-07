@@ -25,6 +25,14 @@ function App() {
             <Route path="customers/create/" element={<CustomerForm />} />
           <Route path="sales/" element={<SalesList />} />
             <Route path="sales/create/" element={<SaleForm />} />
+          <Route path="appointments/" element={"imported js funcion for appointment list"} />
+            <Route path="appointments/create/" element={"imported js funcion for appointment form"} />
+          <Route path="technicians/" element={"imported js funcion for technician list"} />
+            <Route path="technicians/create/" element={"imported js funcion for technician form"} />
+          <Route path="manufacturers/" element={"imported js funcion for manufacturer list"} />
+            <Route path="manufacturers/create/" element={"imported js funcion for manufcaturer form"} />
+          <Route path="automobiles/" element={"imported js funcion for automobile list"} />
+            <Route path="automobiles/create/" element={"imported js funcion for automobile form"} />
 
         </Routes>
       </div>

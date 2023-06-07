@@ -53,6 +53,82 @@ function Nav() {
                 </div>
               </div>
             </li>
+            <li>
+              <div className="d-flex">
+                <button className="navbar-toggler navbar-dropdown d-inline" type="button" data-bs-toggle="collapse" data-bs-target="#inventory" aria-controls="inventory" aria-expanded="false" aria-label="Toggle navigation">
+                  <div className="navbar-brand navbar-dropdown">Inventory Department</div>
+                </button>
+                <div className="collapse" id="inventory">
+                  <div className="row">
+                    <div className="col ps-3 pe-3 mx-3">
+                      <NavLink className="nav-link" aria-current="page" to="/manufacturers/">
+                        List of Manufacturers
+                      </NavLink>
+                    </div>
+                    <div className="col ps-3 pe-3 mx-3">
+                      <NavLink className="nav-link" aria-current="page" to="/automobiles/">
+                        List of Automobiles
+                      </NavLink>
+                    </div>
+                    <div className="col ps-3 pe-3 mx-3">
+                      <NavLink className="nav-link" aria-current="page" to="/models/">
+                        List of Vehicle Models
+                      </NavLink>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col ps-3 pe-3 mx-3">
+                      <NavLink className="nav-link" aria-current="page" to="/manufacturers/create/">
+                        Add a Manufacturer
+                      </NavLink>
+                    </div>
+                    <div className="col ps-3 pe-3 mx-3">
+                      <NavLink className="nav-link" aria-current="page" to="/automobiles/create/">
+                        Add an Automobile
+                      </NavLink>
+                    </div>
+                    <div className="col ps-3 pe-3 mx-3">
+                      <NavLink className="nav-link" aria-current="page" to="/models/create/">
+                        Add a Vehicle Model
+                      </NavLink>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div className="d-flex">
+                <button className="navbar-toggler navbar-dropdown d-inline" type="button" data-bs-toggle="collapse" data-bs-target="#services" aria-controls="services" aria-expanded="false" aria-label="Toggle navigation">
+                  <div className="navbar-brand navbar-dropdown">Services Department</div>
+                </button>
+                <div className="collapse" id="services">
+                  <div className="row">
+                    <div className="col ps-3 pe-3 mx-3">
+                      <NavLink className="nav-link" aria-current="page" to="/technicians/">
+                        List of Technicians
+                      </NavLink>
+                    </div>
+                    <div className="col ps-3 pe-3 mx-3">
+                      <NavLink className="nav-link" aria-current="page" to="/appointments/history/">
+                        Service History
+                      </NavLink>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col ps-3 pe-3 mx-3">
+                      <NavLink className="nav-link" aria-current="page" to="/technicians/create/">
+                        Add a Technician
+                      </NavLink>
+                    </div>
+                    <div className="col ps-3 pe-3 mx-3">
+                      <NavLink className="nav-link" aria-current="page" to="/appointments/">
+                        Add an Appointment
+                      </NavLink>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
           </ul>
         </div>
       </div>
