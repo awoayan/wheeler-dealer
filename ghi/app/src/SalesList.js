@@ -1,6 +1,22 @@
 import React, { useEffect, useState } from 'react';
 
 
+const Delete = async (event) => {
+    const identifier = event.target.id
+    if(window.confirm(`Are you sure you want to delete this?`)){
+        const url = `http://localhost:8090/api/sales/${identifier}/`
+        const fetchConfig = {
+            method: "delete",
+            headers: {
+            'Content-Type': 'application/json',
+            },
+        };
+        const response = await fetch(url,fetchConfig)
+        if (response.ok) {return(window.location.reload())}
+    }
+}
+
+
 function SalesList(){
     const [sales, setSales] = useState([]);
     const fetchData = async () => {
@@ -35,6 +51,7 @@ function SalesList(){
                             <td>{sale.customer.first_name} {sale.customer.last_name}</td>
                             <td>{sale.salesperson.first_name} {sale.salesperson.last_name}</td>
                             <td>{sale.automobile.vin}</td>
+                            <td><button className='badge btn-danger' id={sale.id} onClick={Delete}>Delete</button></td>
                         </tr>
                     );
                     })}

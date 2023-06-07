@@ -11,7 +11,7 @@ function SalesPersonForm( ) {
     const [formValues, setFormValues] = useState({
         first_name:'',
         last_name:'',
-        employee_id:'',
+        employee_id:''
         }
     );
     const handleSubmit = async (event) => {

@@ -24,15 +24,15 @@ class Sale(models.Model):
     customer = models.ForeignKey(
         Customer,
         related_name="sales",
-        on_delete=models.CASCADE
+        on_delete=models.PROTECT
     )
     salesperson = models.ForeignKey(
         Salesperson,
         related_name="sales",
-        on_delete=models.CASCADE
+        on_delete=models.PROTECT
     )
     automobile = models.ForeignKey(
         AutomobileVO,
         related_name="sales",
-        on_delete=models.CASCADE
+        on_delete=models.PROTECT
     )
