@@ -8,6 +8,7 @@ import SalesList from './SalesList';
 import CustomerList from './CustomerList';
 import CustomerForm from './CustomerForm';
 import SalesPersonHistory from './SalesPersonHistory';
+import ManufacturerForm from './ManufacturerForm';
 
 
 function App() {
@@ -30,10 +31,9 @@ function App() {
           <Route path="technicians/" element={"imported js funcion for technician list"} />
             <Route path="technicians/create/" element={"imported js funcion for technician form"} />
           <Route path="manufacturers/" element={"imported js funcion for manufacturer list"} />
-            <Route path="manufacturers/create/" element={"imported js funcion for manufcaturer form"} />
+            <Route path="manufacturers/create/" element={<ManufacturerForm/>} />
           <Route path="automobiles/" element={"imported js funcion for automobile list"} />
             <Route path="automobiles/create/" element={"imported js funcion for automobile form"} />
-
         </Routes>
       </div>
     </BrowserRouter>
