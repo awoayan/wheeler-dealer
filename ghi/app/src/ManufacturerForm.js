@@ -19,8 +19,6 @@ function ManufacturerForm() {
 
         const response = await fetch(locationUrl, fetchConfig);
         if (response.ok) {
-            const newShoe = await response.json();
-            console.log(newShoe);
             const successTag = document.getElementById("successful")
             successTag.classList.remove("d-none")
             setName('')
@@ -28,7 +26,7 @@ function ManufacturerForm() {
     }
     return (
         <div className="row align-items-center">
-            <img style={{ 'overflow': 'hidden', 'left': '0', "position": "absolute", 'zIndex': '-1', 'height': '100%', 'width': '100%' }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuPg6Bu5lFXrOiuALYAE01CHWGCZJvV4wIbQ&usqp=CAU" />
+            <img style={{ 'left': '0', "position": "absolute", 'zIndex': '-1', 'height': '100%', 'width': '100%' }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuPg6Bu5lFXrOiuALYAE01CHWGCZJvV4wIbQ&usqp=CAU" />
             <div className="col-6">
                 <div className="shadow p-4 mt-4 bg-secondary">
                     <h1 className="text-white">Create a new Manufacturer</h1>
