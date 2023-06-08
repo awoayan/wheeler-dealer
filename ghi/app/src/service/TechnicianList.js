@@ -2,13 +2,13 @@ import React from 'react';
 import { useState, useEffect } from "react";
 
 const TechnicianList = () => {
-const [technicians, setTechnician] = useState([]);
+const [technicians, setTechnicians] = useState([]);
 
 const getData = async () => {
     const response = await fetch("http://localhost:8080/api/technicians/");
     if (response.ok) {
     const data = await response.json();
-    setTechnician(data.technicians);
+    setTechnicians(data.technicians);
     }
 };
 
@@ -20,7 +20,7 @@ const handleDelete = async (event) => {
     const url = `http://localhost:8080/api/technicians/${event.target.id}`;
 
     const fetchConfigs = {
-    method: "Delete",
+    method: "DELETE",
     headers: {
         "Content-Type": "application/json",
     },
@@ -28,7 +28,7 @@ const handleDelete = async (event) => {
     const response = await fetch(url, fetchConfigs);
     const data = await response.json();
 
-    setTechnician(
+    setTechnicians(
     technicians.filter(
         (technician) => String(technician.id) !== event.target.id
     )

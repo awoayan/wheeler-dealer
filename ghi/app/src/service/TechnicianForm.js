@@ -1,26 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
-class CreateTechnicianForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: '',
-            employeeno: '',
-            hasEntered: false,
-            error: false,
-        }
+const CreateTechnicianForm = ()=> {
+    const [name, setName]=useState('');
+    const [employeeno, setEmployeeno]=useState('');
+    const [hasEntered, setHasEntered]=useState(false);
+    const [error, setError]=useState(false);
 
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleName = this.handleName.bind(this);
-        this.handleEmployeeNo = this.handleEmployeeNo.bind(this);
-    }
-
-    async handleSubmit(event) {
+    const handleSubmit=async(event) =>{
         event.preventDefault();
-        const data = { ...this.state };
-        delete data.hasEntered;
-        delete data.error;
+        const data = {
+            name: name,
+            employeeno: employeeno,
 
+        };
+    console.log(data)
         const technicianUrl = 'http://localhost:8080/api/technicians/';
         const fetchOptions = {
             method: 'POST',
@@ -32,55 +25,43 @@ class CreateTechnicianForm extends React.Component {
 
         const technicianResponse = await fetch(technicianUrl, fetchOptions);
         if (technicianResponse.ok) {
-            this.setState({
-                name: '',
-                employeeno: '',
-                hasEntered: true,
-                error: false,
-            })
+            
+                setName('');
+                setEmployeeno('');
+                setHasEntered(true);
+                setError(false);
+            
             let newTechnician = await technicianResponse.json();
-            this.props.addTechnician(newTechnician);
+            // addTechnician(newTechnician);
         } else {
-            this.setState({
-                name: '',
-                employeeno: '',
-                hasEntered: false,
-                error: true
-            })
+                setName('');
+                setEmployeeno('');
+                setHasEntered(true);
+                setError(false);
         }
     }
 
-    handleName(event) {
-        const value = event.target.value;
-        this.setState({ name: value });
-    }
+// (); {
+//         let successMessageClasses = 'alert alert-success d-none mb-0';
+//         let formClasses = '';
+//         if (this.state.hasEntered) {
+//             successMessageClasses = 'alert alert-success mb-0';
+//             formClasses = 'd-none';
+//             setTimeout(() => {
+//                 successMessageClasses = 'alert alert-success d-none mb-0';
+//                 formClasses = '';
+//                 this.setState({hasEntered: false})
+//             }, 2000);
+//         }
 
-    handleEmployeeNo(event) {
-        const value = event.target.value;
-        this.setState({ employeeno: value });
-    }
-
-    render() {
-        let successMessageClasses = 'alert alert-success d-none mb-0';
-        let formClasses = '';
-        if (this.state.hasEntered) {
-            successMessageClasses = 'alert alert-success mb-0';
-            formClasses = 'd-none';
-            setTimeout(() => {
-                successMessageClasses = 'alert alert-success d-none mb-0';
-                formClasses = '';
-                this.setState({hasEntered: false})
-            }, 2000);
-        }
-
-        let errorMessageClasses = 'alert alert-danger d-none mb-0 mt-3';
-        if (this.state.error) {
-            errorMessageClasses = 'alert alert-danger mb-0 mt-3';
-            setTimeout(() => {
-                errorMessageClasses = 'alert alert-danger d-none mb-0 mt-3';
-                this.setState({error: false})
-            }, 5000);
-        }
+//         let errorMessageClasses = 'alert alert-danger d-none mb-0 mt-3';
+//         if (this.state.error) {
+//             errorMessageClasses = 'alert alert-danger mb-0 mt-3';
+//             setTimeout(() => {
+//                 errorMessageClasses = 'alert alert-danger d-none mb-0 mt-3';
+//                 this.setState({error: false})
+//             }, 5000);
+//         }
 
         return (
             <div className="my-5 container">
@@ -88,20 +69,30 @@ class CreateTechnicianForm extends React.Component {
                     <div className="col">
                         <div className="card shadow">
                             <div className="card-body">
-                                <form className={formClasses} onSubmit={this.handleSubmit} id="create-technician-form">
+                                <form onSubmit={handleSubmit} id="create-technician-form">
                                     <h1 className="card-title">Add a New Service Technician</h1>
                                     <p className="mb-3">
                                         Please add a new technician
                                     </p>
                                     <div className="col">
                                         <div className="form-floating mb-3">
-                                            <input onChange={this.handleName} required placeholder="Name" type="text" id="name" name="name" className="form-control" />
+                                            <input 
+                                            onChange={(e)=> setName(e.target.value)} 
+                                            required placeholder="Name" 
+                                            type="text" 
+                                            id="name" 
+                                            name="name" 
+                                            className="form-control" />
                                             <label htmlFor="name">Employee Name</label>
                                         </div>
                                     </div>
                                     <div className="col">
                                         <div className="form-floating mb-3">
-                                            <input onChange={this.handleEmployeeNo} required placeholder="Employee No." type="text" id="employeeno" name="employeeno" className="form-control" />
+                                            <input 
+                                            onChange={(e)=> setEmployeeno(e.target.value)} 
+                                            required placeholder="Employee No." 
+                                            type="text" id="employeeno" name="employeeno" 
+                                            className="form-control" />
                                             <label htmlFor="employeeno">Employee No.</label>
                                         </div>
                                     </div>
@@ -121,5 +112,5 @@ class CreateTechnicianForm extends React.Component {
         );
     }
 
-}
+
 export default CreateTechnicianForm;
