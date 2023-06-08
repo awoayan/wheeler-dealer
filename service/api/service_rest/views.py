@@ -133,7 +133,7 @@ def api_list_technicians(request):
             encoder=TechnicianListEncoder,
             safe=False,
         )
-    else:
+    elif request.method == "POST":
         content = json.loads(request.body)
         technician = Technician.objects.create(**content)
         return JsonResponse(
