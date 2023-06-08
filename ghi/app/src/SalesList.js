@@ -32,6 +32,7 @@ function SalesList() {
 
     return (
         <>
+        <div className='w-100% h-100%' style={{'left': '0', "position": "absolute", 'zIndex': '-1', 'height': '100%', 'width': '100%' ,"background": "linear-gradient(217deg, rgba(160,160,160,.8), rgba(155,155,155,0) 70.71%), linear-gradient(127deg, rgba(160,160,160,.8), rgba(155,155,155,0) 70.71%), linear-gradient(336deg, rgba(160,160,160,.8), rgba(155,155,155,0) 70.71%)"}}/>
             <div>
                 <h1>Sales</h1>
                 <table className="table table-striped table-hover">
