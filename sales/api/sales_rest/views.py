@@ -39,7 +39,11 @@ def salesperson(request, id):
 
     if request.method == "DELETE":
         person, _ = Salesperson.objects.get(id=id).delete()
-        return JsonResponse({"deleted": person > 0})
+        check = person > 0
+        response = JsonResponse({"deleted": check})
+        if check:
+            response.status_code = 200
+            return response
 
     elif request.method == "GET":
         person = Salesperson.objects.get(id=id)
@@ -120,7 +124,7 @@ def list_sales(request):
                 sale_info["automobile"] = auto
 
                 response = Sale.objects.create(**sale_info)
-                
+
 
             except Customer.DoesNotExist:
                 response = JsonResponse({"message": "Invalid Customer id."})

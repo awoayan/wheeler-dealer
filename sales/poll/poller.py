@@ -13,8 +13,8 @@ def poll(repeat=True):
             automobile_list = json.loads(response.content)
             for automobile in automobile_list["autos"]:
                 AutomobileVO.objects.update_or_create(
-                    vin = automobile["vin"],
-                    sold = automobile["sold"]
+                    vin=automobile["vin"],
+                    sold=automobile["sold"]
                 )
 
         except Exception as e:

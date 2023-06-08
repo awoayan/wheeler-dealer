@@ -16,7 +16,7 @@ class Customer(models.Model):
 
 class AutomobileVO(models.Model):
     vin = models.CharField(max_length=100)
-    sold = models.BooleanField()
+    sold = models.BooleanField(default=False)
 
 
 class Sale(models.Model):
@@ -24,15 +24,15 @@ class Sale(models.Model):
     customer = models.ForeignKey(
         Customer,
         related_name="sales",
-        on_delete=models.PROTECT
+        on_delete=models.CASCADE
     )
     salesperson = models.ForeignKey(
         Salesperson,
         related_name="sales",
-        on_delete=models.PROTECT
+        on_delete=models.CASCADE
     )
     automobile = models.ForeignKey(
         AutomobileVO,
         related_name="sales",
-        on_delete=models.PROTECT
+        on_delete=models.CASCADE
     )
