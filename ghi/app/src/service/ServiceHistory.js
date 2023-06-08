@@ -18,7 +18,7 @@ function ServiceHistory({ appointments }) {
                     </form>
                 </div>
             </div>
-            <table className="striped-hover" style={{ "marginTop": '20px' }}>
+            <table striped hover style={{ marginTop: '20px' }}>
                 <thead>
                     <tr>
                         <th>Vehicle VIN</th>

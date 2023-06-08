@@ -5,7 +5,7 @@ function AppointmentList({ appointments }) {
     return (
         <>
             <h1>Current Service Appointments</h1>
-            <table striped hover>
+            <table>
                 <thead>
                     <tr>
                         <th>Valued Customer</th>

@@ -40,7 +40,7 @@ const handleDelete = async (event) => {
         <div className="offset-3 col-6">
         <div className="shadow p-4 mt-4">
             <h1>Available Service Technicians</h1>
-            <table className="striped-hover">
+            <table striped hover>
                 <thead>
                     <tr>
                         <th>Employee No.</th>
