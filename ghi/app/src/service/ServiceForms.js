@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import Button from 'react-bootstrap/Button';
+import { NavLink } from "react-router-dom";
 
 
-function ServiceForm  {
+class CreateAppointmentForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -163,11 +165,11 @@ function ServiceForm  {
                                             </div>
                                         </div>
                                         <div className="col">
-                                            <Spinner animation="border" className={spinnerClasses} />
+                                            <spinner animation="border" className={spinnerClasses} />
                                         </div>
                                         <div>
-                                            <Alert show={promptClasses} variant="warning">
-                                                <Alert.Heading>Uh oh, we have no technicians!</Alert.Heading>
+                                            <alert show={promptClasses} variant="warning">
+                                                <alert.heading>Uh oh, we have no technicians!</alert.heading>
                                                 <p>
                                                     Please add a technician to the database in order to proceed with scheduling a service appointment.
                                                 </p>
@@ -177,7 +179,7 @@ function ServiceForm  {
                                                         Add a Technician
                                                     </Button>
                                                 </div>
-                                            </Alert>
+                                            </alert>
                                         </div>
                                         <div className="mb-3">
                                             <select onChange={this.handleTechnician} value={this.state.technician} required name="technician" id="technician" className={dropdownClasses}>
@@ -212,4 +214,4 @@ function ServiceForm  {
         );
     }
 }
-export default ServiceForm;
+export default CreateAppointmentForm;

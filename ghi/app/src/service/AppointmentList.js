@@ -35,8 +35,8 @@ function AppointmentList({ appointments, cancelAppointments, finishAppointment }
                                 <td>{appointment.reason}</td>
                                 <td>
                                     <buttongroup>
-                                        <button variant="warning" onClick={() => cancelAppointments(`${appointment.href}`)}>Cancel</button>
-                                        <button variant="success" onClick={() => finishAppointment(`${appointment.href}`)}>Finished</button>
+                                        <button>Cancel</button>
+                                        <button>Finished</button>
                                     </buttongroup>
                                 </td>
                             </tr>
