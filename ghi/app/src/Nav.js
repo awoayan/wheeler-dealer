@@ -12,7 +12,7 @@ function Nav() {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li>
               <div className="d-flex">
-                <button className="navbar-toggler navbar-dropdown d-inline" type="button" data-bs-toggle="collapse" data-bs-target="#sales" aria-controls="sales" aria-expanded="false" aria-label="Toggle navigation">
+                <button id="sales-btn" className="navbar-toggler navbar-dropdown d-inline" type="button" data-bs-toggle="collapse" data-bs-target="#sales" aria-controls="sales" aria-expanded="false" aria-label="Toggle navigation">
                   <div className="navbar-brand navbar-dropdown">Sales Department</div>
                 </button>
                 <div className="collapse" id="sales">
@@ -55,7 +55,7 @@ function Nav() {
             </li>
             <li>
               <div className="d-flex">
-                <button className="navbar-toggler navbar-dropdown d-inline" type="button" data-bs-toggle="collapse" data-bs-target="#inventory" aria-controls="inventory" aria-expanded="false" aria-label="Toggle navigation">
+                <button id="inv-btn"  className="navbar-toggler navbar-dropdown d-inline" type="button" data-bs-toggle="collapse" data-bs-target="#inventory" aria-controls="inventory" aria-expanded="false" aria-label="Toggle navigation">
                   <div className="navbar-brand navbar-dropdown">Inventory Department</div>
                 </button>
                 <div className="collapse" id="inventory">
@@ -98,7 +98,7 @@ function Nav() {
             </li>
             <li>
               <div className="d-flex">
-                <button className="navbar-toggler navbar-dropdown d-inline" type="button" data-bs-toggle="collapse" data-bs-target="#services" aria-controls="services" aria-expanded="false" aria-label="Toggle navigation">
+                <button id="serv-btn" className="navbar-toggler navbar-dropdown d-inline" type="button" data-bs-toggle="collapse" data-bs-target="#services" aria-controls="services" aria-expanded="false" aria-label="Toggle navigation">
                   <div className="navbar-brand navbar-dropdown">Services Department</div>
                 </button>
                 <div className="collapse" id="services">
