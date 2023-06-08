@@ -107,12 +107,12 @@ class CreateTechnicianForm extends React.Component {
                                     </div>
                                     <button className="btn btn-outline-dark">Add Technician</button>
                                 </form>
-                                <div className={successMessageClasses} id="success-message">
+                                {/* <div className={successMessageClasses} id="success-message">
                                     Technician has been added!
                                 </div>
                                 <div className={errorMessageClasses} id="error-message">
                                     Entered data not valid!
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

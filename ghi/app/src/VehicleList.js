@@ -1,5 +1,4 @@
 import {useState, useEffect} from 'react';
-import {NavLink} from 'react-router-dom';
 
 
 function VehicleList() {
@@ -46,7 +45,7 @@ function VehicleList() {
             </tbody>
         </table>
         <div>
-            <NavLink className="nav-link" aria-current="page" to="new"><button>Add a Vehicle</button></NavLink>
+            <navlink className="nav-link" aria-current="page" to="new"><button>Add a Vehicle</button></navlink>
 
         </div>
         </div>

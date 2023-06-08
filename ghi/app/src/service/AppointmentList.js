@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function AppointmentList({ appointments, cancelAppointments, finishAppointment }) {
+function AppointmentList({ appointments }) {
     return (
         <>
             <h1>Current Service Appointments</h1>
