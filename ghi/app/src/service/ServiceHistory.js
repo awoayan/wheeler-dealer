@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import Table from 'react-bootstrap/Table';
 
-export default function ServiceHistory({ appointments }) {
+
+
+function ServiceHistory({ appointments }) {
     const [search, setSearch] = useState("");
     return (
         <>
@@ -17,7 +18,7 @@ export default function ServiceHistory({ appointments }) {
                     </form>
                 </div>
             </div>
-            <Table striped hover style={{ marginTop: '20px' }}>
+            <table striped hover style={{ marginTop: '20px' }}>
                 <thead>
                     <tr>
                         <th>Vehicle VIN</th>
@@ -44,7 +45,7 @@ export default function ServiceHistory({ appointments }) {
                             : null
                     })}
                 </tbody>
-            </Table>
+            </table>
         </>
     )
 }
@@ -58,3 +59,5 @@ function renderStatus(apt) {
         return "Active";
     }
 }
+
+export default ServiceHistory;

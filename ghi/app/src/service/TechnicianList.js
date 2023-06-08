@@ -1,12 +1,46 @@
 import React from 'react';
-import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/Button';
+import { useState, useEffect } from "react";
 
-export default function TechnicianList({ technicians, deleteTech }) {
+const TechnicianList = () => {
+const [technicians, setTechnician] = useState([]);
+
+const getData = async () => {
+    const response = await fetch("http://localhost:8080/api/technicians/");
+    if (response.ok) {
+    const data = await response.json();
+    setTechnician(data.technicians);
+    }
+};
+
+useEffect(() => {
+    getData();
+}, []);
+
+const handleDelete = async (event) => {
+    const url = `http://localhost:8080/api/technicians/${event.target.id}`;
+
+    const fetchConfigs = {
+    method: "Delete",
+    headers: {
+        "Content-Type": "application/json",
+    },
+    };
+    const response = await fetch(url, fetchConfigs);
+    const data = await response.json();
+
+    setTechnician(
+    technicians.filter(
+        (technician) => String(technician.id) !== event.target.id
+    )
+    );
+};
     return (
         <>
+        <div className="row">
+        <div className="offset-3 col-6">
+        <div className="shadow p-4 mt-4">
             <h1>Available Service Technicians</h1>
-            <Table striped hover>
+            <table striped hover>
                 <thead>
                     <tr>
                         <th>Employee No.</th>
@@ -21,13 +55,23 @@ export default function TechnicianList({ technicians, deleteTech }) {
                                 <td>{technician.employeeno}</td>
                                 <td>{technician.name}</td>
                                 <td>
-                                    <Button variant="danger" onClick={() => deleteTech(`${technician.href}`)}>Delete</Button>
-                                </td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </Table>
-        </>
-    )
-}
+                                <button
+                        onClick={handleDelete}
+                        id={technician.id}
+                        className="btn btn-danger"
+                        >
+                        </button>
+                    </td>
+                    </tr>
+                );
+                })}
+            </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+    </>
+);
+};
+
+export default TechnicianList;

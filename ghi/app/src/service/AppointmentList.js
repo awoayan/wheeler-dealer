@@ -1,14 +1,11 @@
 import React from 'react';
-import Button from 'react-buttonstrap/button';
-import ButtonGroup from 'react-bootstrap/Table';
-import Table from 'react-bootstrap/Table';
 
 
-export default function AppointmentList({ appointments, cancelAppointments, finishAppointment }) {
+function AppointmentList({ appointments, cancelAppointments, finishAppointment }) {
     return (
         <>
             <h1>Current Service Appointments</h1>
-            <Table striped hover>
+            <table striped hover>
                 <thead>
                     <tr>
                         <th>Valued Customer</th>
@@ -37,16 +34,17 @@ export default function AppointmentList({ appointments, cancelAppointments, fini
                                 <td>{appointment.technician.name}</td>
                                 <td>{appointment.reason}</td>
                                 <td>
-                                    <ButtonGroup>
-                                        <Button variant="warning" onClick={() => cancelAppointment(`${appointment.href}`)}>Cancel</Button>
-                                        <Button variant="success" onClick={() => finishAppointment(`${appointment.href}`)}>Finished</Button>
-                                    </ButtonGroup>
+                                    <buttongroup>
+                                        <button variant="warning" onClick={() => cancelAppointments(`${appointment.href}`)}>Cancel</button>
+                                        <button variant="success" onClick={() => finishAppointment(`${appointment.href}`)}>Finished</button>
+                                    </buttongroup>
                                 </td>
                             </tr>
                             : null
                     })}
                 </tbody>
-            </Table>
+            </table>
         </>
     );
 };
+export default AppointmentList;

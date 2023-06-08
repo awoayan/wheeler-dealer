@@ -1,9 +1,7 @@
-import Alert from 'react-bootstrap/Alert';
-import Button from 'react-bootstrap/Button';
-import { NavLink } from "react-router-dom";
-import Spinner from 'react-bootstrap/Spinner';
+import React, { useState, useEffect } from "react";
 
-export default class CreateAppointmentForm extends React.Component {
+
+function ServiceForm  {
     constructor(props) {
         super(props);
         this.state = {
@@ -214,3 +212,4 @@ export default class CreateAppointmentForm extends React.Component {
         );
     }
 }
+export default ServiceForm;

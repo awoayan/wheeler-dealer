@@ -9,6 +9,11 @@ import CustomerList from './CustomerList';
 import CustomerForm from './CustomerForm';
 import SalesPersonHistory from './SalesPersonHistory';
 import ManufacturerForm from './ManufacturerForm';
+import TechnicianList from './service/TechnicianList';
+import TechnicianForm from './service/TechnicianForm';
+import ManufacturerList from './ManufacturerList';
+import AutomobileList from './AutomobileList';
+import AppointmentList from './service/AppointmentList';
 
 
 function App() {
@@ -26,13 +31,13 @@ function App() {
             <Route path="customers/create/" element={<CustomerForm />} />
           <Route path="sales/" element={<SalesList />} />
             <Route path="sales/create/" element={<SaleForm />} />
-          <Route path="appointments/" element={"imported js funcion for appointment list"} />
+          <Route path="appointments/" element={<AppointmentList />} />
             <Route path="appointments/create/" element={"imported js funcion for appointment form"} />
-          <Route path="technicians/" element={"imported js funcion for technician list"} />
-            <Route path="technicians/create/" element={"imported js funcion for technician form"} />
-          <Route path="manufacturers/" element={"imported js funcion for manufacturer list"} />
+          <Route path="technicians/" element={<TechnicianList /> } />
+            <Route path="technicians/create/" element={<TechnicianForm />} />
+          <Route path="manufacturers/" element={<ManufacturerList />} />
             <Route path="manufacturers/create/" element={<ManufacturerForm/>} />
-          <Route path="automobiles/" element={"imported js funcion for automobile list"} />
+          <Route path="automobiles/" element={<AutomobileList />} />
             <Route path="automobiles/create/" element={"imported js funcion for automobile form"} />
         </Routes>
       </div>
