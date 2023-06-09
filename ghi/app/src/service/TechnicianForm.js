@@ -13,7 +13,7 @@ const CreateTechnicianForm = ()=> {
             employeeno: employeeno,
 
         };
-    console.log(data)
+
         const technicianUrl = 'http://localhost:8080/api/technicians/';
         const fetchOptions = {
             method: 'POST',
@@ -41,27 +41,27 @@ const CreateTechnicianForm = ()=> {
         }
     }
 
-// (); {
-//         let successMessageClasses = 'alert alert-success d-none mb-0';
-//         let formClasses = '';
-//         if (this.state.hasEntered) {
-//             successMessageClasses = 'alert alert-success mb-0';
-//             formClasses = 'd-none';
-//             setTimeout(() => {
-//                 successMessageClasses = 'alert alert-success d-none mb-0';
-//                 formClasses = '';
-//                 this.setState({hasEntered: false})
-//             }, 2000);
-//         }
 
-//         let errorMessageClasses = 'alert alert-danger d-none mb-0 mt-3';
-//         if (this.state.error) {
-//             errorMessageClasses = 'alert alert-danger mb-0 mt-3';
-//             setTimeout(() => {
-//                 errorMessageClasses = 'alert alert-danger d-none mb-0 mt-3';
-//                 this.setState({error: false})
-//             }, 5000);
-//         }
+        let successMessageClasses = 'alert alert-success d-none mb-0';
+        let formClasses = '';
+        if (this.state.hasEntered) {
+            successMessageClasses = 'alert alert-success mb-0';
+            formClasses = 'd-none';
+            setTimeout(() => {
+                successMessageClasses = 'alert alert-success d-none mb-0';
+                formClasses = '';
+                this.setState({hasEntered: false})
+            }, 2000);
+        }
+
+        let errorMessageClasses = 'alert alert-danger d-none mb-0 mt-3';
+        if (this.state.error) {
+            errorMessageClasses = 'alert alert-danger mb-0 mt-3';
+            setTimeout(() => {
+                errorMessageClasses = 'alert alert-danger d-none mb-0 mt-3';
+                this.setState({error: false})
+            }, 5000);
+        }
 
         return (
             <div className="my-5 container">
@@ -111,6 +111,7 @@ const CreateTechnicianForm = ()=> {
             </div>
         );
     }
+
 
 
 export default CreateTechnicianForm;
