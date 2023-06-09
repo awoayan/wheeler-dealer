@@ -22,17 +22,11 @@ class AutomobileVO(models.Model):
 class Sale(models.Model):
     price = models.IntegerField()
     customer = models.ForeignKey(
-        Customer,
-        related_name="sales",
-        on_delete=models.CASCADE
+        Customer, related_name="sales", on_delete=models.CASCADE
     )
     salesperson = models.ForeignKey(
-        Salesperson,
-        related_name="sales",
-        on_delete=models.CASCADE
+        Salesperson, related_name="sales", on_delete=models.CASCADE
     )
     automobile = models.ForeignKey(
-        AutomobileVO,
-        related_name="sales",
-        on_delete=models.CASCADE
+        AutomobileVO, related_name="sales", on_delete=models.CASCADE
     )

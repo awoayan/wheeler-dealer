@@ -25,7 +25,7 @@ def list_salespeople(request):
     )
 
 
-@require_http_methods(["GET", "PUT", "DELETE"])
+@require_http_methods(["GET", "DELETE"])
 def salesperson(request, id):
     try:
         person = Salesperson.objects.get(id=id)
@@ -45,13 +45,11 @@ def salesperson(request, id):
             response.status_code = 200
             return response
 
-    elif request.method == "GET":
+    else:
         person = Salesperson.objects.get(id=id)
         return JsonResponse(
             {"salespeople": person}, encoder=SalesPersonEncoder, safe=False
         )
-
-    return JsonResponse({"need a put method still": True})
 
 
 @require_http_methods(["GET", "POST"])
@@ -71,7 +69,11 @@ def list_customers(request):
     else:
         response = Customer.objects.all()
 
-    return JsonResponse({"customers": response}, encoder=CustomerEncoder, safe=False)
+    return JsonResponse(
+        {"customers": response},
+        encoder=CustomerEncoder,
+        safe=False
+    )
 
 
 @require_http_methods(["GET", "DELETE"])
@@ -92,7 +94,11 @@ def customer(request, id):
 
     else:
         person = Customer.objects.get(id=id)
-        return JsonResponse({"customer": person}, encoder=CustomerEncoder, safe=False)
+        return JsonResponse(
+            {"customer": person},
+            encoder=CustomerEncoder,
+            safe=False
+        )
 
 
 @require_http_methods(["GET", "POST"])
@@ -115,12 +121,16 @@ def list_sales(request):
                 response = Sale.objects.create(**sale_info)
 
             except Customer.DoesNotExist:
-                response = JsonResponse({"message": "Invalid Customer id."})
+                response = JsonResponse(
+                    {"message": "Invalid Customer id."}
+                )
                 response.status_code = 400
                 return response
 
             except Salesperson.DoesNotExist:
-                response = JsonResponse({"message": "Invalid Salesperson employee id."})
+                response = JsonResponse(
+                    {"message": "Invalid Salesperson employee id."}
+                )
                 response.status_code = 400
                 return response
 
@@ -130,7 +140,9 @@ def list_sales(request):
                 return response
 
         except AttributeError:
-            response = JsonResponse({"message": "Invalid Sale creation information."})
+            response = JsonResponse(
+                {"message": "Invalid Sale creation information."}
+            )
             response.status_code = 400
             return response
 
@@ -140,7 +152,7 @@ def list_sales(request):
     return JsonResponse({"sales": response}, encoder=SaleEncoder, safe=False)
 
 
-@require_http_methods(["GET", "PUT", "DELETE"])
+@require_http_methods(["GET", "DELETE"])
 def sale(request, id):
     try:
         this_sale = Sale.objects.get(id=id)
@@ -156,8 +168,10 @@ def sale(request, id):
         this_sale, _ = Sale.objects.get(id=id).delete()
         return JsonResponse({"deleted": this_sale > 0})
 
-    elif request.method == "GET":
+    else:
         this_sale = Sale.objects.get(id=id)
-        return JsonResponse({"sale": this_sale}, encoder=SaleEncoder, safe=False)
-
-    return JsonResponse({"need a put method still": True})
+        return JsonResponse(
+            {"sale": this_sale},
+            encoder=SaleEncoder,
+            safe=False
+        )
