@@ -26,7 +26,7 @@ const handleDelete = async (event) => {
     },
     };
     const response = await fetch(url, fetchConfigs);
-    console.log(event)
+
     const data = await response.json();
 
     setTechnicians(
