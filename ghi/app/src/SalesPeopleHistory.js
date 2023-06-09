@@ -25,7 +25,7 @@ function SaleHistory() {
         setPerson(e.target.value);
         let temp = sales.filter(sale => sale.salesperson.id == e.target.value)
         setDisplay(temp)
-        }
+    }
     return (
         <div >
             <div className='w-100% h-100%' style={{ 'left': '0', "position": "absolute", 'zIndex': '-1', 'height': '100%', 'width': '100%', "background": "linear-gradient(217deg, rgba(160,160,160,.8), rgba(155,155,155,0) 70.71%), linear-gradient(127deg, rgba(160,160,160,.8), rgba(155,155,155,0) 70.71%), linear-gradient(336deg, rgba(160,160,160,.8), rgba(155,155,155,0) 70.71%)" }} />
@@ -53,15 +53,16 @@ function SaleHistory() {
                             </tr>
                         </thead>
                         <tbody className="text-align-justify w-100">
-                        {display.map((sale) => {
-                            return (
-                            <tr key={sale.id} id={sale.id}>
-                                <td>{sale.salesperson.first_name} {sale.salesperson.last_name}</td>
-                                <td>{sale.customer.first_name} {sale.customer.last_name}</td>
-                                <td>{sale.automobile.vin}</td>
-                                <td>{sale.price}</td>
-                            </tr>
-                        )})}
+                            {display.map((sale) => {
+                                return (
+                                    <tr key={sale.id} id={sale.id}>
+                                        <td>{sale.salesperson.first_name} {sale.salesperson.last_name}</td>
+                                        <td>{sale.customer.first_name} {sale.customer.last_name}</td>
+                                        <td>{sale.automobile.vin}</td>
+                                        <td>{sale.price}</td>
+                                    </tr>
+                                )
+                            })}
                         </tbody>
                     </table>
                 </div>
