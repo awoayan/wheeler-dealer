@@ -1,9 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 
 
-function ServiceHistory({ appointments }) {
-    const [search, setSearch] = useState("");
+function ServiceHistory() {
+    const [search, setSearch] = useState('')
+    const [vin, setVin] = useState('')
+    const [result, setResult] = useState('')
+    const [appointments, setAppointments]=useState([])
+
+    const getData = async () => {
+        const response = await fetch("http://localhost:8080/api/appointments/");
+        if (response.ok) {
+        const data = await response.json();
+        setAppointments(data.appointments);
+        }
+    };
+
+    useEffect(() => {
+        getData();
+    }, []);
     return (
         <>
             <h1>Service Appointments History</h1>
@@ -18,7 +33,7 @@ function ServiceHistory({ appointments }) {
                     </form>
                 </div>
             </div>
-            <table striped hover style={{ marginTop: '20px' }}>
+            <table>
                 <thead>
                     <tr>
                         <th>Vehicle VIN</th>
@@ -31,8 +46,9 @@ function ServiceHistory({ appointments }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {appointments && appointments.map(appointment => {
-                        return appointment.vin.toUpperCase().includes(search.toUpperCase()) ?
+                    {appointments.map(appointment => {
+                        return(
+                        appointment.vin.toUpperCase().includes(search.toUpperCase()) ?
                             <tr key={appointment.href}>
                                 <td>{appointment.vin}</td>
                                 <td>{appointment.custname}</td>
@@ -42,8 +58,8 @@ function ServiceHistory({ appointments }) {
                                 <td>{appointment.reason}</td>
                                 <td>{renderStatus(appointment)}</td>
                             </tr>
-                            : null
-                    })}
+                            :null
+                    )})}
                 </tbody>
             </table>
         </>

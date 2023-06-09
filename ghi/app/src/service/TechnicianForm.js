@@ -25,43 +25,37 @@ const CreateTechnicianForm = ()=> {
 
         const technicianResponse = await fetch(technicianUrl, fetchOptions);
         if (technicianResponse.ok) {
-            
-                setName('');
-                setEmployeeno('');
-                setHasEntered(true);
-                setError(false);
-            
             let newTechnician = await technicianResponse.json();
-            // addTechnician(newTechnician);
-        } else {
                 setName('');
                 setEmployeeno('');
                 setHasEntered(true);
                 setError(false);
+        
         }
+
     }
 
 
-        // let successMessageClasses = 'alert alert-success d-none mb-0';
-        // let formClasses = '';
-        // if (this.state.hasEntered) {
-        //     successMessageClasses = 'alert alert-success mb-0';
-        //     formClasses = 'd-none';
-        //     setTimeout(() => {
-        //         successMessageClasses = 'alert alert-success d-none mb-0';
-        //         formClasses = '';
-        //         this.setState({hasEntered: false})
-        //     }, 2000);
-        // }
+        let successMessageClasses = 'alert alert-success d-none mb-0';
+        let formClasses = '';
+        if (hasEntered) {
+            successMessageClasses = 'alert alert-success mb-0';
+            formClasses = 'd-none';
+            setTimeout(() => {
+                successMessageClasses = 'alert alert-success d-none mb-0';
+                formClasses = '';
+                setHasEntered(false)
+            }, 2000);
+        }
 
-        // let errorMessageClasses = 'alert alert-danger d-none mb-0 mt-3';
-        // if (this.state.error) {
-        //     errorMessageClasses = 'alert alert-danger mb-0 mt-3';
-        //     setTimeout(() => {
-        //         errorMessageClasses = 'alert alert-danger d-none mb-0 mt-3';
-        //         this.setState({error: false})
-        //     }, 5000);
-        // }
+        let errorMessageClasses = 'alert alert-danger d-none mb-0 mt-3';
+        if (error) {
+            errorMessageClasses = 'alert alert-danger mb-0 mt-3';
+            setTimeout(() => {
+                errorMessageClasses = 'alert alert-danger d-none mb-0 mt-3';
+                setError(false)
+            }, 5000);
+        }
 
         return (
             <div className="my-5 container">
@@ -98,12 +92,12 @@ const CreateTechnicianForm = ()=> {
                                     </div>
                                     <button className="btn btn-outline-dark">Add Technician</button>
                                 </form>
-                                {/* <div className={successMessageClasses} id="success-message">
+                                <div className={successMessageClasses} id="success-message">
                                     Technician has been added!
                                 </div>
                                 <div className={errorMessageClasses} id="error-message">
                                     Entered data not valid!
-                                </div> */}
+                                </div>
                             </div>
                         </div>
                     </div>
