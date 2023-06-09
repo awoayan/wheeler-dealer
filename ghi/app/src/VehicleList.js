@@ -45,8 +45,9 @@ function VehicleList() {
                 </tbody>
             </table>
             <div>
-                <navlink className="nav-link" aria-current="page" to="new"><button>Add a Vehicle</button></navlink>
-
+                <navlink className="nav-link" aria-current="page" to="new">
+                    <button>Add a Vehicle</button>
+                    </navlink>
             </div>
         </div>
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { NavLink } from "react-router-dom";
 
 
@@ -23,7 +23,19 @@ class CreateAppointmentForm extends React.Component {
         this.handleTechnician = this.handleTechnician.bind(this);
         this.handleReason = this.handleReason.bind(this);
     }
-
+    [this.technicians, this.setTechnicians]=usestate([])
+    async getTechniciansList () {
+        const response = await fetch("http://localhost:8080/api/technicians/");
+        if (response.ok) {
+        const data = await response.json();
+        setTechnicians(data.technicians);
+        }
+    };
+    
+    useEffect(() => {
+        getData();
+    }, []);
+    
     async handleSubmit(event) {
         event.preventDefault();
         const data = { ...this.state };
@@ -164,17 +176,19 @@ class CreateAppointmentForm extends React.Component {
                                             </div>
                                         </div>
                                         <div className="col">
-                                            <spinner animation="border" className={spinnerClasses} />
+                                            <div animation="border" className={spinnerClasses} />
                                         </div>
-                                            <div show={promptClasses} variant="warning">
+                                            <div>
                                                 <div>Uh oh, we have no technicians!<div/>
                                                 <p>
                                                     Please add a technician to the database in order to proceed with scheduling a service appointment.
                                                 </p>
                                                 <hr />
                                                 <div className="d-flex justify-content-end">
-                                                    <button as={NavLink} to="/technicians/new/" variant="outline-warning">
+                                                    <button className="button btn- ">
+                                                    <NavLink className={"nav-link"} to="/technicians/create/" variant="outline-warning">
                                                         Add a Technician
+                                                    </NavLink>
                                                     </button>
                                                 </div>
                                             </div>
