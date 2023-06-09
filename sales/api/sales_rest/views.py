@@ -71,11 +71,7 @@ def list_customers(request):
     else:
         response = Customer.objects.all()
 
-    return JsonResponse(
-        {"customers": response},
-        encoder=CustomerEncoder,
-        safe=False
-    )
+    return JsonResponse({"customers": response}, encoder=CustomerEncoder, safe=False)
 
 
 @require_http_methods(["GET", "DELETE"])
@@ -96,11 +92,7 @@ def customer(request, id):
 
     else:
         person = Customer.objects.get(id=id)
-        return JsonResponse(
-            {"customer": person},
-            encoder=CustomerEncoder,
-            safe=False)
-
+        return JsonResponse({"customer": person}, encoder=CustomerEncoder, safe=False)
 
 
 @require_http_methods(["GET", "POST"])

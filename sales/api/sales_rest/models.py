@@ -4,7 +4,7 @@ from django.db import models
 class Salesperson(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    employee_id = models.SmallIntegerField()
+    employee_id = models.SmallIntegerField(unique=True)
 
 
 class Customer(models.Model):
@@ -15,7 +15,7 @@ class Customer(models.Model):
 
 
 class AutomobileVO(models.Model):
-    vin = models.CharField(max_length=100)
+    vin = models.CharField(max_length=100, unique=True)
     sold = models.BooleanField(default=False)
 
 

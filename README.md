@@ -14,4 +14,4 @@ microservice, here.
 
 ## Sales microservice
 
-
+My models were designed to meet the requirements asked of the project and the poller grabs vo's from the inventory microservice. I didn't choose to filter by the "sold" value for the automobiles on the server side and instead I incorporate that filter in SaleForm.js.

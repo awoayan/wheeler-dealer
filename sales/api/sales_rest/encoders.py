@@ -9,7 +9,7 @@ class SalesPersonEncoder(ModelEncoder):
         "last_name",
         "employee_id",
         "id"
-    ]
+        ]
 
 
 class CustomerEncoder(ModelEncoder):
@@ -20,7 +20,7 @@ class CustomerEncoder(ModelEncoder):
         "address",
         "phone_number",
         "id"
-    ]
+        ]
 
 
 class AutomobileVOEncoder(ModelEncoder):
@@ -29,7 +29,7 @@ class AutomobileVOEncoder(ModelEncoder):
         "vin",
         "sold",
         "id"
-    ]
+        ]
 
 
 class SaleEncoder(ModelEncoder):
@@ -40,9 +40,9 @@ class SaleEncoder(ModelEncoder):
         "salesperson",
         "automobile",
         "id"
-    ]
+        ]
     encoders = {
         "customer": CustomerEncoder(),
         "salesperson": SalesPersonEncoder(),
-        "automobile": AutomobileVOEncoder()
+        "automobile": AutomobileVOEncoder(),
     }
