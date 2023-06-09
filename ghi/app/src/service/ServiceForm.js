@@ -20,7 +20,7 @@ const CreateAppointmentForm = () => {
         const response = await fetch("http://localhost:8080/api/technicians/");
         if (response.ok) {
         const data = await response.json();
-        // setTechnicians(data.technicians);
+        setTechnicians(data.technicians);
         }
     };
     getTechniciansList();
@@ -92,41 +92,6 @@ const CreateAppointmentForm = () => {
         const value = event.target.value;
         setReason(value);
     }
-
-    // render(); {
-    //     let spinnerClasses = '';
-    //     let promptClasses = false;
-    //     let dropdownClasses = 'form-select d-none';
-    //     if (props.technicians?.length > 0) {
-    //         spinnerClasses = 'd-none';
-    //         promptClasses = false;
-    //         dropdownClasses = 'form-select';
-    //     } else {
-    //         dropdownClasses = 'form-select d-none';
-    //         spinnerClasses = 'd-none';
-    //         promptClasses = true;
-    //     }
-
-    //     let successMessageClasses = 'alert alert-success d-none mb-0';
-    //     let formClasses = '';
-    //     if (this.state.hasEntered) {
-    //         successMessageClasses = 'alert alert-success mb-0';
-    //         formClasses = 'd-none';
-    //         setTimeout(() => {
-    //             successMessageClasses = 'alert alert-success d-none mb-0';
-    //             formClasses = '';
-    //             this.setState({ hasEntered: false })
-    //         }, 2000);
-    //     }
-
-    //     let errorMessageClasses = 'alert alert-danger d-none mb-0 mt-3';
-    //     if (this.state.error) {
-    //         errorMessageClasses = 'alert alert-danger mb-0 mt-3';
-    //         setTimeout(() => {
-    //             errorMessageClasses = 'alert alert-danger d-none mb-0 mt-3';
-    //             this.setState({ error: false })
-    //         }, 5000);
-    //     }
 
         return (
             <>

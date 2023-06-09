@@ -8,10 +8,7 @@ Team: Ayan and Charles
 ## Design
 
 ## Service microservice
-
-Explain your models and integration with the inventory
-microservice, here.
-
+my service microservice has a technicians, appointment, and vin models that correspond with my service department. the service microservice makes an API call to the inventory microservice to commuicate to eachother.
 ## Sales microservice
 
 

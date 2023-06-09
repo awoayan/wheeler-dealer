@@ -25,20 +25,14 @@ const CreateTechnicianForm = ()=> {
 
         const technicianResponse = await fetch(technicianUrl, fetchOptions);
         if (technicianResponse.ok) {
-            
-                setName('');
-                setEmployeeno('');
-                setHasEntered(true);
-                setError(false);
-            
             let newTechnician = await technicianResponse.json();
-            // addTechnician(newTechnician);
-        } else {
                 setName('');
                 setEmployeeno('');
                 setHasEntered(true);
                 setError(false);
+        
         }
+
     }
 
 
