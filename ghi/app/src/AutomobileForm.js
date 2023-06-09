@@ -12,7 +12,7 @@ function AutomobileForm() {
         color: '',
         year: '',
         vin: '',
-        model_id:''
+        model_id: ''
     });
     const [models, setModels] = useState([]);
     const fetchData = async () => {
@@ -22,7 +22,7 @@ function AutomobileForm() {
             setModels(data.models);
         }
     }
-    useEffect(() => { fetchData(); }, [] );
+    useEffect(() => { fetchData(); }, []);
     const handleSubmit = async (event) => {
         event.preventDefault();
         const locationUrl = 'http://localhost:8100/api/automobiles/';
@@ -41,13 +41,13 @@ function AutomobileForm() {
                 color: '',
                 year: '',
                 vin: '',
-                model_id:''
+                model_id: ''
             })
         }
     }
     return (
         <div className="d-grid">
-            <img id="bgimage" style={{'left': '0', "position": "absolute", 'zIndex': '-1', 'height': '100%', 'width': '100%' }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzRT9aPJ1_GMEoUe7a1x0KZ3XYhTPgW3oWmg&usqp=CAU" />
+            <img id="bgimage" style={{ 'left': '0', "position": "absolute", 'zIndex': '-1', 'height': '100%', 'width': '100%' }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzRT9aPJ1_GMEoUe7a1x0KZ3XYhTPgW3oWmg&usqp=CAU" />
             <div className="row pt-5 mt-5" style={{ "justifyContent": "center" }}>
                 <div className="col m-0 px-0 bg-white bg-opacity-75" style={{ 'maxWidth': '50%' }}>
                     <div className="shadow p-4 bg-white bg-opacity-75">

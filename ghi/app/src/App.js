@@ -28,24 +28,24 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="salesperson/" element={<SalesPeopleList />}/>
-            <Route path="salesperson/create/" element={<SalesPersonForm />} />
-          <Route path="customers/" element={<CustomerList />}/>
-            <Route path="customers/create/" element={<CustomerForm />} />
+          <Route path="salesperson/" element={<SalesPeopleList />} />
+          <Route path="salesperson/create/" element={<SalesPersonForm />} />
+          <Route path="customers/" element={<CustomerList />} />
+          <Route path="customers/create/" element={<CustomerForm />} />
           <Route path="sales/" element={<SalesList />} />
-            <Route path="sales/create/" element={<SaleForm />} />
+          <Route path="sales/create/" element={<SaleForm />} />
           <Route path="appointments/history/" element={<AppointmentList />} />
-            <Route path="appointments/create/" element={<CreateAppointmentForm/>} />
-            <Route path="service/history/" element={<ServiceHistory/>} />
-            <Route path="service/create/" element={<ServiceForm/>} />
-          <Route path="technicians/" element={<TechnicianList /> } />
-            <Route path="technicians/create/" element={<TechnicianForm />} />
+          <Route path="appointments/create/" element={<CreateAppointmentForm />} />
+          <Route path="service/history/" element={<ServiceHistory />} />
+          <Route path="service/create/" element={<ServiceForm />} />
+          <Route path="technicians/" element={<TechnicianList />} />
+          <Route path="technicians/create/" element={<TechnicianForm />} />
           <Route path="manufacturers/" element={<ManufacturerList />} />
-            <Route path="manufacturers/create/" element={<ManufacturerForm />} />
+          <Route path="manufacturers/create/" element={<ManufacturerForm />} />
           <Route path="automobiles/" element={<AutomobileList />} />
-            <Route path="automobiles/create/" element={<AutomobileForm />} />
-          <Route path="models/" element={<VehicleList/>} />
-            <Route path="models/create/" element={<ModelForm />} />
+          <Route path="automobiles/create/" element={<AutomobileForm />} />
+          <Route path="models/" element={<VehicleList />} />
+          <Route path="models/create/" element={<ModelForm />} />
         </Routes>
       </div>
     </BrowserRouter>

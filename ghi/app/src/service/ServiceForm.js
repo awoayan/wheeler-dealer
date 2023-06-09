@@ -23,26 +23,25 @@ class CreateAppointmentForm extends React.Component {
         this.handleTechnician = this.handleTechnician.bind(this);
         this.handleReason = this.handleReason.bind(this);
     }
-    [this.technicians, this.setTechnicians]=usestate([])
+    // [this.technicians, this.setTechnicians]=usestate([])
     async getTechniciansList () {
         const response = await fetch("http://localhost:8080/api/technicians/");
         if (response.ok) {
         const data = await response.json();
-        setTechnicians(data.technicians);
+        // setTechnicians(data.technicians);
         }
     };
-    
-    useEffect(() => {
-        getData();
-    }, []);
-    
+
+    // useEffect(() => {
+    //     getData();
+    // }, []);
+
     async handleSubmit(event) {
         event.preventDefault();
         const data = { ...this.state };
         delete data.technicians;
         delete data.hasEntered;
         delete data.error;
-
         const appointmentUrl = 'http://localhost:8080/api/appointments/';
         const fetchOptions = {
             method: 'POST',
