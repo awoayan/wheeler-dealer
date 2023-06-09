@@ -2,47 +2,40 @@ import React, {useEffect, useState} from "react";
 import { NavLink } from "react-router-dom";
 
 
-class CreateAppointmentForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            vin: '',
-            custname: '',
-            date: '',
-            time: '',
-            reason: '',
-            hasEntered: false,
-            error: false,
-        }
+const CreateAppointmentForm = () => {
+    const [vin, setVin]=useState('')
+    const [custname, setCustName]=useState('')
+    const [date, setDate]=useState('')
+    const [time, setTime]=useState('')
+    const [reason, setReason]=useState('')
+    const [technician, setTechnician]=useState('')
 
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleVIN = this.handleVIN.bind(this);
-        this.handleCustomerName = this.handleCustomerName.bind(this);
-        this.handleDate = this.handleDate.bind(this);
-        this.handleTime = this.handleTime.bind(this);
-        this.handleTechnician = this.handleTechnician.bind(this);
-        this.handleReason = this.handleReason.bind(this);
-    }
-    [this.technicians, this.setTechnicians]=usestate([])
-    async getTechniciansList () {
+    const [hasEntered, setHasEntered]=useState(false);
+    const [error, setError]=useState(false);
+    const [technicians, setTechnicians]=useState([]);
+    
+    
+    useEffect(() => {
+        const getTechniciansList = async () =>{
         const response = await fetch("http://localhost:8080/api/technicians/");
         if (response.ok) {
         const data = await response.json();
         // setTechnicians(data.technicians);
         }
     };
-    
-    useEffect(() => {
-        getData();
-    }, []);
-    
-    async handleSubmit(event) {
-        event.preventDefault();
-        const data = { ...this.state };
-        delete data.technicians;
-        delete data.hasEntered;
-        delete data.error;
+    getTechniciansList();
+    },[]);
 
+    
+    const handleSubmit=async(event) => {
+        event.preventDefault();
+        const data={}
+        data.vin = vin
+        data.custname = custname
+        data.date = date
+        data.time = time
+        data.technician = technician
+        data.reason = reason
         const appointmentUrl = 'http://localhost:8080/api/appointments/';
         const fetchOptions = {
             method: 'POST',
