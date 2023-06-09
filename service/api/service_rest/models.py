@@ -23,7 +23,7 @@ class Technician(models.Model):
     name = models.CharField(max_length=200, unique=True, null=True)
     employeeno = models.PositiveSmallIntegerField(unique=True, null=True)
 
-    def __str__(self):
+    def __str__(self): 
         return self.name
 
     def get_api_url(self):

@@ -12,7 +12,7 @@ from service_rest.models import ValuedVINVO
 
 
 def get_vins():
-    response = requests.get("http://inventory-api:8000/api/automobiles/")
+    response = requests.get("http://project-beta-inventory-api-1:8000/api/automobiles/")
     content = json.loads(response.content)
     for car in content["autos"]:
         ValuedVINVO.objects.update_or_create(
