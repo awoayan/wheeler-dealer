@@ -12,7 +12,9 @@ const Delete = async (event) => {
             },
         };
         const response = await fetch(url, fetchConfig)
-        if (response.ok) { return (window.location.reload()) }
+        if (response.ok) {
+            window.location.reload()
+        }
     }
 }
 
