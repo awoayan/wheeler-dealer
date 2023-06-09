@@ -17,6 +17,7 @@ import AutomobileForm from './AutomobileForm';
 import ModelForm from './ModelForm';
 import ServiceHistory from './service/ServiceHistory';
 import ServiceForm from './service/ServiceForm';
+import VehicleList from './VehicleList';
 
 
 function App() {
@@ -42,7 +43,7 @@ function App() {
             <Route path="manufacturers/create/" element={<ManufacturerForm />} />
           <Route path="automobiles/" element={<AutomobileList />} />
             <Route path="automobiles/create/" element={<AutomobileForm />} />
-          <Route path="models/" element={""} />
+          <Route path="models/" element={<VehicleList/>} />
             <Route path="models/create/" element={<ModelForm />} />
         </Routes>
       </div>
