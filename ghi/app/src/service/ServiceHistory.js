@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 
 
 function ServiceHistory({ appointments }) {
-    const [search, setSearch] = useState("");
+    const [search, setSearch] = useState('');
+    const [vin, setVin] = useState('');
+    const [reason, setReason] = useState('');
     return (
         <>
             <h1>Service Appointments History</h1>

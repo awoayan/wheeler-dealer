@@ -26,6 +26,7 @@ const handleDelete = async (event) => {
     },
     };
     const response = await fetch(url, fetchConfigs);
+    console.log(event)
     const data = await response.json();
 
     setTechnicians(
@@ -59,7 +60,7 @@ const handleDelete = async (event) => {
                         onClick={handleDelete}
                         id={technician.id}
                         className="btn btn-danger"
-                        >
+                        >DELETE
                         </button>
                     </td>
                     </tr>

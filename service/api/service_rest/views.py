@@ -4,68 +4,7 @@ from django.views.decorators.http import require_http_methods
 import json
 from common.json import ModelEncoder
 from .models import ValuedVINVO, Technician, Appointment
-
-
-class ValuedVINVODetailEncoder(ModelEncoder):
-    model = ValuedVINVO
-    properties = [
-        "valvin",
-        "import_href",
-    ]
-
-
-class TechnicianListEncoder(ModelEncoder):
-    model = Technician
-    properties = [
-        "name",
-        "employeeno",
-    ]
-
-
-class TechnicianDetailEncoder(ModelEncoder):
-    model = Technician
-    properties = [
-        "name",
-        "employeeno",
-    ]
-
-
-class AppointmentListEncoder(ModelEncoder):
-    model = Appointment
-    properties = [
-        "custname",
-        "date",
-        "time",
-        "reason",
-        "vin",
-        "technician",
-        "valued",
-        "active",
-        "cancelled",
-        "finished",
-    ]
-    encoders = {
-        "technician": TechnicianDetailEncoder(),
-    }
-
-
-class AppointmentDetailEncoder(ModelEncoder):
-    model = Appointment
-    properties = [
-        "custname",
-        "date",
-        "time",
-        "reason",
-        "vin",
-        "technician",
-        "valued",
-        "active",
-        "cancelled",
-        "finished",
-    ]
-    encoders = {
-        "technician": TechnicianDetailEncoder(),
-    }
+from .encoder import ValuedVINVODetailEncoder, TechnicianListEncoder, TechnicianDetailEncoder, AppointmentListEncoder, AppointmentDetailEncoder
 
 
 @require_http_methods(["GET", "POST"])
@@ -81,7 +20,7 @@ def api_list_appointments(request):
         content = json.loads(request.body)
         try:
             techid = content["technician"]
-            tech = Technician.objects.get(employeeno=techid)
+            tech = Technician.objects.get(id=techid)
             content["technician"] = tech
         except Technician.DoesNotExist:
             return JsonResponse(
