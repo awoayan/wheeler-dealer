@@ -47,7 +47,7 @@ function SaleForm() {
             const data = await response.json();
             if (objName == 'autos') {
                 const notSoldAutos = []
-                data.autos.map((car) => {if(!car.sold){notSoldAutos.push(car)}})
+                data.autos.map((car) => { if (!car.sold) { notSoldAutos.push(car) } })
                 setAutos(notSoldAutos)
             }
             else if (objName == 'customers') {
@@ -77,13 +77,13 @@ function SaleForm() {
             const carUrl = `http://localhost:8100/api/automobiles/${formValues.automobile}/`
             const fetchConfig = {
                 method: "put",
-                body: JSON.stringify({'sold': true}),
+                body: JSON.stringify({ 'sold': true }),
                 headers: {
                     'Content-Type': 'application/json',
                 },
             };
             const response2 = await fetch(carUrl, fetchConfig)
-            if (response2.ok){
+            if (response2.ok) {
                 const successTag = document.getElementById("successful")
                 successTag.classList.remove("d-none")
                 window.location.reload()

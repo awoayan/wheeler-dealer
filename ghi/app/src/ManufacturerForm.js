@@ -16,7 +16,6 @@ function ManufacturerForm() {
                 'Content-Type': 'application/json',
             },
         };
-
         const response = await fetch(locationUrl, fetchConfig);
         if (response.ok) {
             const successTag = document.getElementById("successful")

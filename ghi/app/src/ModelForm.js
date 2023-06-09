@@ -25,7 +25,7 @@ function ModelForm() {
             setManufacturers(data.manufacturers);
         }
     }
-    useEffect(() => { fetchData(); }, [] );
+    useEffect(() => { fetchData(); }, []);
     const handleSubmit = async (event) => {
         event.preventDefault();
         const locationUrl = 'http://localhost:8100/api/models/';
@@ -49,7 +49,7 @@ function ModelForm() {
     }
     return (
         <div className="d-grid">
-            <img id="bgimage" onError={setImage} style={{'left': '0', "position": "absolute", 'zIndex': '-1', 'height': '100%', 'width': '100%' }} src={formValues.picture_url} />
+            <img id="bgimage" onError={setImage} style={{ 'left': '0', "position": "absolute", 'zIndex': '-1', 'height': '100%', 'width': '100%' }} src={formValues.picture_url} />
             <div className="row pt-5 mt-5" style={{ "justifyContent": "center" }}>
                 <div className="col m-0 px-0 bg-white bg-opacity-75" style={{ 'maxWidth': '50%' }}>
                     <div className="shadow p-4 bg-white bg-opacity-75">

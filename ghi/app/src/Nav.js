@@ -55,7 +55,7 @@ function Nav() {
             </li>
             <li>
               <div className="d-flex">
-                <button id="inv-btn"  className="navbar-toggler navbar-dropdown d-inline" type="button" data-bs-toggle="collapse" data-bs-target="#inventory" aria-controls="inventory" aria-expanded="false" aria-label="Toggle navigation">
+                <button id="inv-btn" className="navbar-toggler navbar-dropdown d-inline" type="button" data-bs-toggle="collapse" data-bs-target="#inventory" aria-controls="inventory" aria-expanded="false" aria-label="Toggle navigation">
                   <div className="navbar-brand navbar-dropdown">Inventory Department</div>
                 </button>
                 <div className="collapse" id="inventory">
@@ -121,7 +121,7 @@ function Nav() {
                       </NavLink>
                     </div>
                     <div className="col ps-3 pe-3 mx-3">
-                      <NavLink className="nav-link" aria-current="page" to="/appointments/">
+                      <NavLink className="nav-link" aria-current="page" to="/appointments/create">
                         Add an Appointment
                       </NavLink>
                     </div>
