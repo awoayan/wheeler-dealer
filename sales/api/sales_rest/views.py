@@ -78,7 +78,7 @@ def list_customers(request):
     )
 
 
-@require_http_methods(["GET", "PUT", "DELETE"])
+@require_http_methods(["GET", "DELETE"])
 def customer(request, id):
     try:
         person = Customer.objects.get(id=id)
@@ -94,11 +94,13 @@ def customer(request, id):
         person, _ = Customer.objects.get(id=id).delete()
         return JsonResponse({"deleted": person > 0})
 
-    elif request.method == "GET":
+    else:
         person = Customer.objects.get(id=id)
-        return JsonResponse({"customer": person}, encoder=CustomerEncoder, safe=False)
+        return JsonResponse(
+            {"customer": person},
+            encoder=CustomerEncoder,
+            safe=False)
 
-    return JsonResponse({"need a put method still": True})
 
 
 @require_http_methods(["GET", "POST"])
@@ -123,14 +125,17 @@ def list_sales(request):
             except Customer.DoesNotExist:
                 response = JsonResponse({"message": "Invalid Customer id."})
                 response.status_code = 400
+                return response
 
             except Salesperson.DoesNotExist:
                 response = JsonResponse({"message": "Invalid Salesperson employee id."})
                 response.status_code = 400
+                return response
 
             except AutomobileVO.DoesNotExist:
                 response = JsonResponse({"message": "Invalid automobile vin."})
                 response.status_code = 400
+                return response
 
         except AttributeError:
             response = JsonResponse({"message": "Invalid Sale creation information."})
